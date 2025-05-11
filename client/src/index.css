@@ -109,11 +109,17 @@
   
   .tooltip {
     opacity: 0;
-    transition: opacity 0.3s;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 50;
+    transform: translateY(10px);
   }
   
-  .node:hover .tooltip {
+  .node:hover .tooltip,
+  .group:hover .tooltip {
     opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
   
   .ecosystem-map {

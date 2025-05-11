@@ -4,6 +4,23 @@ import { Project } from "@shared/schema";
 import { getColorClass } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
 
+// 로고 가져오기
+import succinctLogo from "../../assets/logos/succinct-logo.svg";
+import ethereumLogo from "../../assets/logos/ethereum-logo.svg";
+import polygonLogo from "../../assets/logos/polygon-logo.svg";
+import optimismLogo from "../../assets/logos/optimism-logo.svg";
+import solanaLogo from "../../assets/logos/solana-logo.svg";
+import galxeLogo from "../../assets/logos/galxe-logo.svg";
+import phalaLogo from "../../assets/logos/phala-logo.svg";
+import mantleLogo from "../../assets/logos/mantle-logo.svg";
+import cosmosLogo from "../../assets/logos/cosmos-logo.svg";
+import availLogo from "../../assets/logos/avail-logo.svg";
+import layerzeroLogo from "../../assets/logos/layerzero-logo.svg";
+import bitcoinLogo from "../../assets/logos/bitcoin-logo.svg";
+import celestiaLogo from "../../assets/logos/celestia-logo.svg";
+import taikoLogo from "../../assets/logos/taiko-logo.svg";
+import arbitrumLogo from "../../assets/logos/arbitrum-logo.svg";
+
 interface EcosystemMapProps {
   projects: Project[];
 }
@@ -13,6 +30,42 @@ interface NodePosition {
   x: number;
   y: number;
   radius: number;
+}
+
+// 프로젝트 slug에 따라 적절한 로고를 반환
+const getProjectLogo = (slug: string): string => {
+  switch (slug) {
+    case 'ethereum':
+      return ethereumLogo;
+    case 'polygon':
+      return polygonLogo;
+    case 'optimism':
+      return optimismLogo;
+    case 'solana':
+      return solanaLogo;
+    case 'galxe':
+      return galxeLogo;
+    case 'phala':
+      return phalaLogo;
+    case 'mantle':
+      return mantleLogo;
+    case 'cosmos':
+      return cosmosLogo;
+    case 'avail':
+      return availLogo;
+    case 'layerzero':
+      return layerzeroLogo;
+    case 'bitvm':
+      return bitcoinLogo;
+    case 'celestia':
+      return celestiaLogo;
+    case 'taiko':
+      return taikoLogo;
+    case 'arbitrum':
+      return arbitrumLogo;
+    default:
+      return succinctLogo;
+  }
 }
 
 const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
@@ -101,8 +154,12 @@ const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
             }}
           >
             <div className="bg-background rounded-full w-full h-full flex items-center justify-center border-4 border-primary neon-border">
-              <div className="text-center">
-                <div className="font-bold text-lg md:text-xl text-primary neon-glow">Succinct</div>
+              <div className="w-full h-full flex flex-col items-center justify-center">
+                <img 
+                  src={succinctLogo} 
+                  alt="Succinct" 
+                  className="w-3/4 h-3/4 object-contain mb-1"
+                />
                 <div className="text-xs text-gray-300">ZK Prover Network</div>
               </div>
             </div>
@@ -117,7 +174,7 @@ const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
           return (
             <Link key={project.id} href={`/projects/${project.slug}`}>
               <div 
-                className="node absolute z-20 transition-all duration-300 hover:scale-110 cursor-pointer"
+                className="node absolute z-20 transition-all duration-300 hover:scale-110 cursor-pointer group"
                 style={{
                   left: position.x - position.radius,
                   top: position.y - position.radius,
@@ -126,9 +183,13 @@ const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
                 }}
               >
                 <div className={`bg-background rounded-full w-full h-full flex items-center justify-center border-2 ${getColorClass(project.logoColor, 'border')}`}>
-                  <div className="text-center">
-                    <div className={`font-bold text-xs md:text-sm ${getColorClass(project.logoColor, 'text')}`}>{project.name}</div>
-                    <div className="tooltip absolute -bottom-24 left-1/2 transform -translate-x-1/2 bg-muted p-3 rounded-lg shadow-lg w-48 text-sm">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <img 
+                      src={getProjectLogo(project.slug)} 
+                      alt={project.name} 
+                      className="w-3/4 h-3/4 object-contain"
+                    />
+                    <div className="tooltip absolute -bottom-24 left-1/2 transform -translate-x-1/2 bg-muted p-3 rounded-lg shadow-lg w-48 text-sm opacity-0 transition-opacity group-hover:opacity-100">
                       <div className={`font-bold ${getColorClass(project.logoColor, 'text')}`}>{project.name}</div>
                       <div className="text-xs text-gray-300">{project.description}</div>
                       <div className="text-xs text-gray-300 mt-1">
