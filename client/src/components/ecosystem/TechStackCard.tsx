@@ -33,7 +33,7 @@ const TechStackCard: React.FC<TechStackCardProps> = ({ technology }) => {
           {technology.description}
         </p>
         <div className="flex flex-wrap gap-2 mb-4">
-          {technology.benefits.map((benefit, index) => (
+          {technology.benefits && technology.benefits.map((benefit, index) => (
             <span key={index} className="bg-background px-3 py-1 rounded-full text-xs text-gray-300">
               {benefit}
             </span>

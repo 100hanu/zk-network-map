@@ -24,7 +24,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <div className="mb-4">
           <div className="text-sm text-gray-400 mb-1">사용 기술:</div>
           <div className="flex flex-wrap gap-2">
-            {project.mainTechnologies.map((tech, index) => (
+            {project.mainTechnologies && project.mainTechnologies.map((tech, index) => (
               <span 
                 key={index} 
                 className={`bg-background px-3 py-1 rounded-full text-xs ${getColorClass(project.logoColor, 'text')} border ${getColorClass(project.logoColor, 'border')}`}
