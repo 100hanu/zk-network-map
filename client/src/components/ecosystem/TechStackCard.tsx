@@ -2,7 +2,7 @@ import React from "react";
 import { Technology } from "@shared/schema";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Lock, Bolt, Cpu, Server, RefreshCw } from "lucide-react";
+import { Lock, Bolt, Cpu } from "lucide-react";
 
 interface TechStackCardProps {
   technology: Technology;
@@ -16,12 +16,7 @@ const TechStackCard: React.FC<TechStackCardProps> = ({ technology }) => {
       case 'bolt':
         return <Bolt className="text-primary text-xl" />;
       case 'microchip':
-      case 'cpu':
         return <Cpu className="text-primary text-xl" />;
-      case 'server':
-        return <Server className="text-primary text-xl" />;
-      case 'refresh-cw':
-        return <RefreshCw className="text-primary text-xl" />;
       default:
         return <Bolt className="text-primary text-xl" />;
     }
@@ -38,7 +33,7 @@ const TechStackCard: React.FC<TechStackCardProps> = ({ technology }) => {
           {technology.description}
         </p>
         <div className="flex flex-wrap gap-2 mb-4">
-          {technology.benefits?.map((benefit, index) => (
+          {technology.benefits.map((benefit, index) => (
             <span key={index} className="bg-background px-3 py-1 rounded-full text-xs text-gray-300">
               {benefit}
             </span>

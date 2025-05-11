@@ -78,11 +78,11 @@ export class MemStorage implements IStorage {
         year: 2023,
         status: "프로덕션 단계",
         logoColor: "#8e44ad",
-        mainTechnologies: ["ZK Rollup", "Plonky2", "SP1"],
+        mainTechnologies: ["ZK Rollup", "Plonky2"],
         introduction: "폴리곤은 이더리움의 확장성 문제를 해결하기 위한 사이드체인 기반 레이어2 솔루션입니다. 높은 트랜잭션 처리량과 낮은 수수료를 제공하며, 다양한 DApp과 DeFi 프로젝트들이 폴리곤 네트워크를 활용하고 있습니다. 폴리곤은 Zero Knowledge 기술에 많은 투자를 하고 있으며, Succinct와의 파트너십을 통해 레이어2 솔루션을 더욱 강화하고 있습니다.",
         integrationDetails: [
           "ZK Rollup 최적화: Succinct의 ZK Prover 네트워크를 활용하여 폴리곤의 ZK Rollup 솔루션의 증명 생성 속도를 크게 향상시켰습니다. 이를 통해 트랜잭션 확정 시간이 단축되고 네트워크 처리량이 증가했습니다.",
-          "Succinct의 기술을 활용하여 ZK 인프라 전반에 걸쳐 다양한 기능을 지원하며, SP1을 통해 확장성을 크게 개선했습니다."
+          "Plonky2 통합: Succinct의 고성능 증명 시스템인 Plonky2를 폴리곤 네트워크에 통합하여 증명 생성 및 검증 과정의 효율성을 개선했습니다. 이는 네트워크의 전반적인 성능 향상으로 이어졌습니다."
         ],
         partnershipHighlights: [
           "폴리곤 네트워크의 TPS(초당 트랜잭션 수) 5배 향상",
@@ -100,11 +100,11 @@ export class MemStorage implements IStorage {
         year: 2023,
         status: "구현 단계",
         logoColor: "#e74c3c",
-        mainTechnologies: ["OP Stack", "ZK 사기 증명", "SP1"],
-        introduction: "옵티미즘은 이더리움의 확장성을 개선하기 위한 옵티미스틱 롤업 프로토콜입니다. 'Optimistic'이란 트랜잭션이 일단 유효하다고 가정하고 나중에 이의가 제기될 경우 검증한다는 의미로, 이를 통해 메인넷보다 낮은 비용과 높은 처리량을 제공합니다. Succinct와의 파트너십을 통해 옵티미스틱 롤업의 단점인 출금 지연 시간을 ZK 증명 기술로 개선하고 있습니다.",
+        mainTechnologies: ["Optimistic Rollup", "ZK Bridge"],
+        introduction: "옵티미즘은,이더리움의 확장성을 개선하기 위한 옵티미스틱 롤업 프로토콜입니다. 'Optimistic'이란 트랜잭션이 일단 유효하다고 가정하고 나중에 이의가 제기될 경우 검증한다는 의미로, 이를 통해 메인넷보다 낮은 비용과 높은 처리량을 제공합니다. Succinct와의 파트너십을 통해 옵티미스틱 롤업의 단점인 출금 지연 시간을 ZK 증명 기술로 개선하고 있습니다.",
         integrationDetails: [
           "ZK Bridge 개발: Succinct와 옵티미즘은 공동으로 ZK Bridge를 개발하여 기존 옵티미스틱 롤업의 7일 챌린지 기간을 대폭 줄였습니다. 이를 통해 L2에서 L1으로의 자산 이동 시간이 크게 단축되었습니다.",
-          "OP Succinct 및 OP Succinct Lite를 통해 ZK 사기 증명을 도입하여, OP Stack 롤업의 보안성과 효율성을 향상시켰습니다."
+          "옵티미스틱 롤업과 ZK 증명 하이브리드 모델: Succinct의 ZK 증명 기술을 옵티미스틱 롤업 프로토콜에 부분적으로 적용하여, 두 기술의 장점을 결합한 하이브리드 모델을 구축했습니다. 이는 보안성과 효율성을 모두 향상시켰습니다."
         ],
         partnershipHighlights: [
           "L2에서 L1으로의 출금 시간 7일에서 15분으로 단축",
@@ -157,182 +157,6 @@ export class MemStorage implements IStorage {
           "이더리움 메인넷과의 완벽한 호환성 유지하며 ZK 롤업 구현",
           "개발자 친화적인 ZK-EVM 도구 공동 개발"
         ]
-      },
-      {
-        name: "Galxe",
-        slug: "galxe",
-        description: "ZK 기반 공정 추첨 시스템",
-        logo: "galxe-gal-logo.svg",
-        year: 2024,
-        status: "구현 단계",
-        logoColor: "#1abc9c",
-        mainTechnologies: ["ZK 추첨", "SP1", "드랜드 오라클"],
-        introduction: "Galxe는 블록체인 기반의 크리덴셜 네트워크로, 웹3 생태계 전반에 걸친 디지털 신원 및 성취를 추적하고 검증하는 플랫폼입니다. Succinct와의 협력을 통해 ZK 증명 기술을 활용한 투명하고 공정한 추첨 시스템을 구현하여, 온체인 이벤트와 마케팅 활동의 신뢰성을 향상시켰습니다.",
-        integrationDetails: [
-          "zkRaffle 시스템 구현: SP1 zkVM을 활용하여 드랜드 오라클과 함께 ZK 증명을 통한 공정한 추첨 시스템을 구현했습니다. 이를 통해 모든 참가자에게 투명하고 검증 가능한 추첨 결과를 제공합니다.",
-          "가스 비용 최적화: ZK 증명 기술을 통해 복잡한 추첨 로직을 효율적으로 처리함으로써, 온체인에서의 가스 비용을 크게 절감하였습니다."
-        ],
-        partnershipHighlights: [
-          "온체인 추첨의 무작위성과 투명성 보장",
-          "추첨 프로세스 검증을 위한 가스 비용 85% 절감",
-          "대규모 추첨 이벤트에 대한 검증 시간 단축",
-          "드랜드 오라클을 통한 안전한 엔트로피 소스 확보",
-          "웹3 마케팅 캠페인의 신뢰성 및 참여도 향상"
-        ]
-      },
-      {
-        name: "Phala Network",
-        slug: "phala-network",
-        description: "TEE 기반 컴퓨팅 네트워크",
-        logo: "phala-pha-logo.svg",
-        year: 2024,
-        status: "개발 단계",
-        logoColor: "#ff0080",
-        mainTechnologies: ["AI 에이전트", "TEE", "ZK 롤업"],
-        introduction: "Phala Network는 신뢰할 수 있는 실행 환경(TEE)을 활용한 프라이버시 보호 클라우드 컴퓨팅 서비스를 제공하는 블록체인 프로젝트입니다. Succinct와의 협력을 통해 TEE 환경에서 실행되는 AI 에이전트의 행동을 ZK 증명으로 검증하는 혁신적인 솔루션을 개발하고 있습니다.",
-        integrationDetails: [
-          "OP Succinct 롤업 도입: SP1 기반의 OP Succinct 롤업을 메인넷에 도입하여 TEE 환경에서 실행되는 AI 에이전트의 행동을 ZK 증명을 통해 검증 가능하게 했습니다.",
-          "TEE와 ZK 증명의 결합: TEE의 프라이버시 보호 기능과 ZK 증명의 검증 가능성을 결합하여, 프라이버시를 유지하면서도 신뢰할 수 있는 컴퓨팅 환경을 구축했습니다."
-        ],
-        partnershipHighlights: [
-          "AI 에이전트 행동의 투명성과 정확성 보장",
-          "TEE 환경 내 연산 결과에 대한 무결성 증명",
-          "프라이버시 보존과 검증 가능성의 최적 균형 달성",
-          "OP Succinct 롤업을 통한 검증 비용 절감",
-          "AI 에이전트의 온체인 상호작용 신뢰성 향상"
-        ]
-      },
-      {
-        name: "Mantle",
-        slug: "mantle",
-        description: "모듈형 롤업 기술 플랫폼",
-        logo: "mantle-mnt-logo.svg",
-        year: 2024,
-        status: "개발 단계",
-        logoColor: "#3498db",
-        mainTechnologies: ["ZK 롤업", "zkEVM", "SP1"],
-        introduction: "Mantle은 이더리움의 확장성 문제를 해결하기 위한 모듈형 롤업 기술 플랫폼으로, 높은 처리량과 낮은 거래 비용을 제공합니다. 처음에는 옵티미스틱 롤업 기술로 시작했지만, Succinct와의 협력을 통해 ZK 롤업으로의 전환을 진행 중입니다.",
-        integrationDetails: [
-          "옵티미스틱 롤업에서 ZK 롤업으로 전환: Succinct의 zkEVM 프레임워크와 SP1을 도입하여 기존의 옵티미스틱 롤업에서 ZK 롤업으로 전환하는 과정을 진행 중입니다.",
-          "하이브리드 접근 방식: 두 롤업 기술의 장점을 결합한 하이브리드 접근 방식을 채택하여, 점진적으로 ZK 롤업으로 마이그레이션하는 동시에 서비스 연속성을 유지합니다."
-        ],
-        partnershipHighlights: [
-          "트랜잭션 확정 시간 95% 단축",
-          "zkEVM 통합을 통한 EVM 호환성 유지",
-          "SP1 기반 ZK 증명 생성 시스템 구축",
-          "롤업 브리지 보안성 강화",
-          "확장성과 보안성의 균형 최적화"
-        ]
-      },
-      {
-        name: "Solana",
-        slug: "solana",
-        description: "고성능 블록체인 플랫폼",
-        logo: "solana-sol-logo.svg",
-        year: 2024,
-        status: "연구 단계",
-        logoColor: "#9b59b6",
-        mainTechnologies: ["ZK 증명", "Solana", "SP1"],
-        introduction: "Solana는 높은 처리량과 낮은 트랜잭션 비용을 제공하는 고성능 블록체인 플랫폼입니다. Succinct와의 협력을 통해 SP1 기반 ZK 증명 기술을 Solana 생태계에 도입하여, 새로운 스케일링 솔루션과 프라이버시 기능을 개발하고 있습니다.",
-        integrationDetails: [
-          "Solana 생태계 ZK 증명 통합: SP1을 활용하여 Solana 생태계에 ZK 증명 기술을 도입함으로써, 트랜잭션 검증 과정의 효율성을 향상시켰습니다.",
-          "프라이버시 보호 기능 개발: ZK 증명을 활용한 프라이버시 보호 기능을 Solana 플랫폼에 추가하여, 민감한 정보를 공개하지 않고도 트랜잭션의 유효성을 검증할 수 있는 방법을 제공합니다."
-        ],
-        partnershipHighlights: [
-          "Solana의 확장성과 ZK 증명의 결합",
-          "프로그램 실행 증명을 위한 ZK 솔루션 개발",
-          "크로스체인 통신을 위한 ZK 브리지 연구",
-          "스테이트 압축을 통한 저장 공간 최적화",
-          "개발자를 위한 ZK 도구 및 라이브러리 제공"
-        ]
-      },
-      {
-        name: "Cosmos",
-        slug: "cosmos",
-        description: "블록체인 간 상호운용성 네트워크",
-        logo: "cosmos-atom-logo.svg",
-        year: 2024,
-        status: "개발 단계",
-        logoColor: "#2ecc71",
-        mainTechnologies: ["IBC", "Cosmos", "SP1"],
-        introduction: "Cosmos는 독립적인 블록체인들이 서로 통신할 수 있는 인터블록체인 커뮤니케이션(IBC) 프로토콜을 중심으로 구축된 생태계입니다. Succinct와의 협력을 통해 IBC의 보안성과 효율성을 ZK 증명 기술로 향상시키는 프로젝트를 진행 중입니다.",
-        integrationDetails: [
-          "IBC v2 ZK 브리지 구현: IBC v2의 공식 배포와 함께, Cosmos와 Ethereum 간의 브리지를 Succinct의 Prover Network와 SP1을 통해 구현하여, 저렴한 비용으로 IBC 트랜잭션을 가능하게 했습니다.",
-          "크로스체인 ZK 검증: 서로 다른 블록체인 네트워크 간의 상태 검증을 ZK 증명을 통해 효율적으로 수행할 수 있는 시스템을 개발하여, 크로스체인 트랜잭션의 신뢰성과 속도를 향상시켰습니다."
-        ],
-        partnershipHighlights: [
-          "Cosmos-Ethereum 간 브리지 구축 및 검증 비용 절감",
-          "IBC 트랜잭션 검증 시간 단축",
-          "크로스체인 상태 동기화 효율성 향상",
-          "IBC 보안 모델 강화를 위한 ZK 증명 통합",
-          "다중 체인 환경에서의 ZK 증명 표준화 기여"
-        ]
-      },
-      {
-        name: "Avail",
-        slug: "avail",
-        description: "모듈형 데이터 가용성 레이어",
-        logo: "avail-ava-logo.svg",
-        year: 2024,
-        status: "구현 단계",
-        logoColor: "#f39c12",
-        mainTechnologies: ["데이터 가용성", "ZK 프로버", "SP1"],
-        introduction: "Avail은 블록체인 확장성 문제 해결을 위한 모듈형 데이터 가용성(DA) 레이어로, 롤업 및 독립 체인에 안정적인 데이터 가용성 솔루션을 제공합니다. Succinct와의 협력을 통해 ZK 증명 기술을 데이터 가용성 레이어에 통합하여 효율성과 보안성을 강화하고 있습니다.",
-        integrationDetails: [
-          "ZK 데이터 가용성: SP1 기반의 ZK 프로버 통합을 통해, 모듈형 ZK 데이터 가용성(DA)을 지원합니다. 이를 통해 데이터 가용성 증명의 효율성과 신뢰성을 향상시켰습니다.",
-          "데이터 샘플링 최적화: ZK 증명을 활용한 효율적인 데이터 샘플링 메커니즘을 구현하여, 최소한의 데이터로도 전체 데이터의 가용성을 검증할 수 있는 시스템을 개발했습니다."
-        ],
-        partnershipHighlights: [
-          "데이터 가용성 증명의 계산 비용 70% 감소",
-          "샘플링 기반 데이터 검증의 효율성 향상",
-          "롤업 체인과의 통합을 위한 ZK 인터페이스 개발",
-          "DA 레이어의 스케일링 능력 확장",
-          "크로스체인 데이터 가용성 검증 표준화"
-        ]
-      },
-      {
-        name: "LayerZero",
-        slug: "layerzero",
-        description: "옴니체인 상호운용성 프로토콜",
-        logo: "layerzero-zro-logo.svg",
-        year: 2024,
-        status: "구현 단계",
-        logoColor: "#e67e22",
-        mainTechnologies: ["vApps", "LayerZero", "SP1"],
-        introduction: "LayerZero는 다양한 블록체인 네트워크 간의 메시지 전송을 가능하게 하는 옴니체인 상호운용성 프로토콜입니다. Succinct와의 협력을 통해 검증 가능한 애플리케이션(vApps) 개발을 위한 새로운 패러다임을 구축하고 있습니다.",
-        integrationDetails: [
-          "vApps 개발 패러다임: 검증 가능한 애플리케이션(vApps) 개발을 위한 새로운 개발 패러다임을 도입하여, 웹3 수준의 보안성과 투명성을 제공합니다.",
-          "크로스체인 ZK 증명: LayerZero의 옴니체인 메시징 프로토콜에 ZK 증명을 통합하여, 다양한 블록체인 네트워크 간의 메시지 전송 과정에서의 보안성과 효율성을 향상시켰습니다."
-        ],
-        partnershipHighlights: [
-          "크로스체인 트랜잭션의 신뢰성 향상",
-          "vApps 개발 프레임워크 제공",
-          "옴니체인 메시지 검증 비용 절감",
-          "크로스체인 ZK 증명 표준화 기여",
-          "블록체인 간 상태 동기화 효율성 향상"
-        ]
-      },
-      {
-        name: "BitVM",
-        slug: "bitvm",
-        description: "Bitcoin 확장성 솔루션",
-        logo: "bitcoin-btc-logo.svg",
-        year: 2024,
-        status: "연구 단계",
-        logoColor: "#f1c40f",
-        mainTechnologies: ["Bitcoin", "ZK 증명", "SP1"],
-        introduction: "BitVM은 Bitcoin의 프로그래머블성과 확장성을 향상시키기 위한 혁신적인 접근 방식으로, 복잡한 스마트 컨트랙트 기능을 Bitcoin에 도입하는 것을 목표로 합니다. Succinct와의 협력을 통해 Bitcoin에서의 ZK 증명 검증을 가능하게 하는 기술을 개발하고 있습니다.",
-        integrationDetails: [
-          "Bitcoin ZK 증명 검증: SP1을 활용하여 Bitcoin에서의 ZK 증명 검증을 가능하게 함으로써, Bitcoin의 프로그래머블성과 확장성을 향상시켰습니다.",
-          "탈중앙화된 검증 시스템: Bitcoin 네트워크 내에서 복잡한 연산 결과를 검증할 수 있는 탈중앙화된 시스템을 구축하여, 기존 Bitcoin의 제한된 스크립팅 능력을 확장했습니다."
-        ],
-        partnershipHighlights: [
-          "Bitcoin에서의 스마트 컨트랙트 기능 구현",
-          "ZK 롤업을 통한 Bitcoin 트랜잭션 처리량 향상",
-          "Bitcoin 기반 탈중앙화 애플리케이션 개발 가능성 확대",
-          "SP1을 활용한 효율적인 ZK 증명 생성 및 검증",
-          "Bitcoin 생태계의 기술적 확장성 향상"
-        ]
       }
     ];
 
@@ -358,27 +182,6 @@ export class MemStorage implements IStorage {
         description: "복잡한 계산을 오프체인에서 처리하고 결과만 온체인에 검증하는 혁신적인 아키텍처입니다.",
         benefits: ["오프체인 계산", "온체인 검증"],
         documentationLink: "/tech/zk-coprocessor"
-      },
-      {
-        name: "SP1",
-        icon: "cpu",
-        description: "Succinct의 ZK 가상 머신으로, 범용 ZK 증명 생성을 위한 강력한 프레임워크입니다.",
-        benefits: ["범용성", "고성능", "개발자 친화적"],
-        documentationLink: "/tech/sp1"
-      },
-      {
-        name: "OP Succinct",
-        icon: "refresh-cw",
-        description: "Optimism의 OP Stack과 Succinct의 기술을 결합한 ZK 롤업 솔루션입니다.",
-        benefits: ["빠른 출금", "효율적인 검증", "OP Stack 호환성"],
-        documentationLink: "/tech/op-succinct"
-      },
-      {
-        name: "zkVM",
-        icon: "server",
-        description: "ZK 증명을 생성하는 가상 머신으로, 복잡한 연산에 대한 증명을 효율적으로 생성합니다.",
-        benefits: ["범용 연산 증명", "효율적인 검증", "프로그래밍 가능성"],
-        documentationLink: "/tech/zkvm"
       }
     ];
 
