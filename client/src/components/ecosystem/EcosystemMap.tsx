@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useLocation } from "wouter";
+import { Link } from "wouter";
 import { Project } from "@shared/schema";
 import { getColorClass } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -19,7 +19,6 @@ const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
   const [positions, setPositions] = useState<NodePosition[]>([]);
   const svgRef = useRef<SVGSVGElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
-  const [_, navigate] = useLocation();
   const isMobile = useIsMobile();
   
   // Set up node positions
@@ -61,9 +60,7 @@ const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
   }, [projects, isMobile]);
 
   const handleNodeClick = (project?: Project) => {
-    if (project) {
-      navigate(`/projects/${project.slug}`);
-    }
+    // 처리할 필요 없음 - Link 컴포넌트로 처리됨
   };
 
   return (
@@ -118,30 +115,30 @@ const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
           if (!position) return null;
           
           return (
-            <div 
-              key={project.id}
-              className="node absolute z-20 transition-all duration-300 hover:scale-110 cursor-pointer"
-              style={{
-                left: position.x - position.radius,
-                top: position.y - position.radius,
-                width: position.radius * 2,
-                height: position.radius * 2
-              }}
-              onClick={() => handleNodeClick(project)}
-            >
-              <div className={`bg-background rounded-full w-full h-full flex items-center justify-center border-2 ${getColorClass(project.logoColor, 'border')}`}>
-                <div className="text-center">
-                  <div className={`font-bold text-xs md:text-sm ${getColorClass(project.logoColor, 'text')}`}>{project.name}</div>
-                  <div className="tooltip absolute -bottom-24 left-1/2 transform -translate-x-1/2 bg-muted p-3 rounded-lg shadow-lg w-48 text-sm">
-                    <div className={`font-bold ${getColorClass(project.logoColor, 'text')}`}>{project.name}</div>
-                    <div className="text-xs text-gray-300">{project.description}</div>
-                    <div className="text-xs text-gray-300 mt-1">
-                      {project.mainTechnologies[0]} 통합
+            <Link key={project.id} href={`/projects/${project.slug}`}>
+              <div 
+                className="node absolute z-20 transition-all duration-300 hover:scale-110 cursor-pointer"
+                style={{
+                  left: position.x - position.radius,
+                  top: position.y - position.radius,
+                  width: position.radius * 2,
+                  height: position.radius * 2
+                }}
+              >
+                <div className={`bg-background rounded-full w-full h-full flex items-center justify-center border-2 ${getColorClass(project.logoColor, 'border')}`}>
+                  <div className="text-center">
+                    <div className={`font-bold text-xs md:text-sm ${getColorClass(project.logoColor, 'text')}`}>{project.name}</div>
+                    <div className="tooltip absolute -bottom-24 left-1/2 transform -translate-x-1/2 bg-muted p-3 rounded-lg shadow-lg w-48 text-sm">
+                      <div className={`font-bold ${getColorClass(project.logoColor, 'text')}`}>{project.name}</div>
+                      <div className="text-xs text-gray-300">{project.description}</div>
+                      <div className="text-xs text-gray-300 mt-1">
+                        {project.mainTechnologies && project.mainTechnologies[0]} 통합
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
