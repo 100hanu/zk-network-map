@@ -40,9 +40,9 @@ const Header: React.FC = () => {
           
           <div className="hidden md:flex space-x-6">
             <Link href="/">
-              <a className={`font-medium hover:text-primary transition-colors ${location === '/' ? 'text-primary' : 'text-white'}`}>
+              <span className={`font-medium hover:text-primary transition-colors cursor-pointer ${location === '/' ? 'text-primary' : 'text-white'}`}>
                 에코시스템 전체 보기
-              </a>
+              </span>
             </Link>
             
             <DropdownMenu>
@@ -56,7 +56,7 @@ const Header: React.FC = () => {
                 {projects?.map((project) => (
                   <DropdownMenuItem key={project.id} asChild>
                     <Link href={`/projects/${project.slug}`}>
-                      <a className="cursor-pointer">{project.name}</a>
+                      <span className="cursor-pointer">{project.name}</span>
                     </Link>
                   </DropdownMenuItem>
                 ))}
@@ -64,15 +64,15 @@ const Header: React.FC = () => {
             </DropdownMenu>
             
             <Link href="/tech-stack">
-              <a className={`font-medium hover:text-primary transition-colors ${location === '/tech-stack' ? 'text-primary' : 'text-white'}`}>
+              <span className={`font-medium hover:text-primary transition-colors cursor-pointer ${location === '/tech-stack' ? 'text-primary' : 'text-white'}`}>
                 기술 스택
-              </a>
+              </span>
             </Link>
             
             <Link href="/contact">
-              <a className={`font-medium hover:text-primary transition-colors ${location === '/contact' ? 'text-primary' : 'text-white'}`}>
+              <span className={`font-medium hover:text-primary transition-colors cursor-pointer ${location === '/contact' ? 'text-primary' : 'text-white'}`}>
                 문의하기
-              </a>
+              </span>
             </Link>
           </div>
 
@@ -86,9 +86,9 @@ const Header: React.FC = () => {
               <SheetContent side="right" className="bg-muted/95 backdrop-blur-md border-gray-800">
                 <nav className="flex flex-col space-y-4 mt-8">
                   <Link href="/" onClick={() => setIsOpen(false)}>
-                    <a className={`py-2 hover:text-primary ${location === '/' ? 'text-primary' : 'text-white'}`}>
+                    <span className={`py-2 hover:text-primary cursor-pointer ${location === '/' ? 'text-primary' : 'text-white'}`}>
                       에코시스템 전체 보기
-                    </a>
+                    </span>
                   </Link>
                   
                   <div className="py-2">
@@ -98,24 +98,24 @@ const Header: React.FC = () => {
                     <div className="pl-4 mt-1 space-y-2">
                       {projects?.map((project) => (
                         <Link key={project.id} href={`/projects/${project.slug}`} onClick={() => setIsOpen(false)}>
-                          <a className="block py-1 hover:text-primary">
+                          <span className="block py-1 hover:text-primary cursor-pointer">
                             {project.name}
-                          </a>
+                          </span>
                         </Link>
                       ))}
                     </div>
                   </div>
                   
                   <Link href="/tech-stack" onClick={() => setIsOpen(false)}>
-                    <a className={`py-2 hover:text-primary ${location === '/tech-stack' ? 'text-primary' : 'text-white'}`}>
+                    <span className={`py-2 hover:text-primary cursor-pointer ${location === '/tech-stack' ? 'text-primary' : 'text-white'}`}>
                       기술 스택
-                    </a>
+                    </span>
                   </Link>
                   
                   <Link href="/contact" onClick={() => setIsOpen(false)}>
-                    <a className={`py-2 hover:text-primary ${location === '/contact' ? 'text-primary' : 'text-white'}`}>
+                    <span className={`py-2 hover:text-primary cursor-pointer ${location === '/contact' ? 'text-primary' : 'text-white'}`}>
                       문의하기
-                    </a>
+                    </span>
                   </Link>
                 </nav>
               </SheetContent>

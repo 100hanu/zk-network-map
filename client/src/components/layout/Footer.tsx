@@ -41,11 +41,11 @@ const Footer: React.FC = () => {
             <div>
               <h4 className="text-lg font-bold mb-4">프로젝트</h4>
               <ul className="space-y-2">
-                <li><Link href="/projects/ethereum"><a className="text-gray-400 hover:text-primary">Ethereum</a></Link></li>
-                <li><Link href="/projects/polygon"><a className="text-gray-400 hover:text-primary">Polygon</a></Link></li>
-                <li><Link href="/projects/optimism"><a className="text-gray-400 hover:text-primary">Optimism</a></Link></li>
-                <li><Link href="/projects/arbitrum"><a className="text-gray-400 hover:text-primary">Arbitrum</a></Link></li>
-                <li><Link href="/projects/scroll"><a className="text-gray-400 hover:text-primary">Scroll</a></Link></li>
+                <li><Link href="/projects/ethereum"><span className="text-gray-400 hover:text-primary cursor-pointer">Ethereum</span></Link></li>
+                <li><Link href="/projects/polygon"><span className="text-gray-400 hover:text-primary cursor-pointer">Polygon</span></Link></li>
+                <li><Link href="/projects/optimism"><span className="text-gray-400 hover:text-primary cursor-pointer">Optimism</span></Link></li>
+                <li><Link href="/projects/arbitrum"><span className="text-gray-400 hover:text-primary cursor-pointer">Arbitrum</span></Link></li>
+                <li><Link href="/projects/scroll"><span className="text-gray-400 hover:text-primary cursor-pointer">Scroll</span></Link></li>
               </ul>
             </div>
             <div>
@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
                 <li><a href="#" className="text-gray-400 hover:text-primary">팀</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-primary">로드맵</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-primary">채용</a></li>
-                <li><Link href="/contact"><a className="text-gray-400 hover:text-primary">연락처</a></Link></li>
+                <li><Link href="/contact"><span className="text-gray-400 hover:text-primary cursor-pointer">연락처</span></Link></li>
               </ul>
             </div>
           </div>
