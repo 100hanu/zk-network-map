@@ -122,7 +122,9 @@ const ProjectDetail: React.FC = () => {
             {language === 'ko' ? '프로젝트 소개' : 'Project Introduction'}
           </h3>
           <p className="text-gray-300 whitespace-pre-line">
-            {project.introduction}
+            {language === 'ko' 
+              ? project.introduction
+              : ((project as any).introductionEn || project.introduction)}
           </p>
         </div>
 
@@ -130,19 +132,34 @@ const ProjectDetail: React.FC = () => {
           <h3 className="text-xl font-bold mb-4">
             {language === 'ko' ? 'Succinct와의 기술적 연결' : 'Technical Integration with Succinct'}
           </h3>
-          {project.integrationDetails?.map((detail, index) => {
-            const [title, description] = detail.split(': ');
-            return (
-              <Card key={index} className="bg-background/60 mb-4">
-                <CardContent className="pt-6">
-                  <h4 className="text-lg font-semibold mb-3">{title}</h4>
-                  <p className="text-gray-300 text-sm">
-                    {description}
-                  </p>
-                </CardContent>
-              </Card>
-            );
-          })}
+          {language === 'ko'
+            ? project.integrationDetails?.map((detail, index) => {
+                const [title, description] = detail.split(': ');
+                return (
+                  <Card key={index} className="bg-background/60 mb-4">
+                    <CardContent className="pt-6">
+                      <h4 className="text-lg font-semibold mb-3">{title}</h4>
+                      <p className="text-gray-300 text-sm">
+                        {description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                );
+              })
+            : ((project as any).integrationDetailsEn || project.integrationDetails)?.map((detail: string, index: number) => {
+                const [title, description] = detail.split(': ');
+                return (
+                  <Card key={index} className="bg-background/60 mb-4">
+                    <CardContent className="pt-6">
+                      <h4 className="text-lg font-semibold mb-3">{title}</h4>
+                      <p className="text-gray-300 text-sm">
+                        {description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                );
+              })
+          }
         </div>
 
         <div className="mb-8">
@@ -150,9 +167,14 @@ const ProjectDetail: React.FC = () => {
             {language === 'ko' ? '파트너십 핵심 내용' : 'Partnership Highlights'}
           </h3>
           <ul className="list-disc list-inside space-y-2 text-gray-300">
-            {project.partnershipHighlights?.map((highlight, index) => (
-              <li key={index}>{highlight}</li>
-            ))}
+            {language === 'ko'
+              ? project.partnershipHighlights?.map((highlight: string, index: number) => (
+                  <li key={index}>{highlight}</li>
+                ))
+              : ((project as any).partnershipHighlightsEn || project.partnershipHighlights)?.map((highlight: string, index: number) => (
+                  <li key={index}>{highlight}</li>
+                ))
+            }
           </ul>
         </div>
 
