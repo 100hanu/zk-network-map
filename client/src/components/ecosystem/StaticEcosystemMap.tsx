@@ -68,6 +68,7 @@ const StaticEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
   
   // 선택된 노드 상태 관리
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
+  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   
   // 노드 위치 저장
   const [positions, setPositions] = useState<{
@@ -184,6 +185,8 @@ const StaticEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
                   setSelectedNode(project.slug);
                 }
               }}
+              onMouseEnter={() => setHoveredNode(project.slug)}
+              onMouseLeave={() => setHoveredNode(null)}
             >
               <div className={`bg-background rounded-full w-full h-full flex items-center justify-center border-2 ${getColorClass(project.logoColor, 'border')}`}>
                 <img 
@@ -194,8 +197,8 @@ const StaticEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
               </div>
             </div>
             
-            {/* 툴팁 */}
-            {isSelected && (
+            {/* 툴팁 - 클릭 또는 호버 시 표시 */}
+            {(isSelected || hoveredNode === project.slug) && (
               <div
                 className="fixed z-50 bg-muted/95 p-4 rounded-lg shadow-lg"
                 style={{
@@ -220,15 +223,17 @@ const StaticEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
                     <ArrowRight className="ml-1 h-4 w-4" />
                   </Link>
                 </div>
-                <button 
-                  className="absolute top-2 right-2 text-gray-500 hover:text-gray-300"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedNode(null);
-                  }}
-                >
-                  ✕
-                </button>
+                {isSelected && (
+                  <button 
+                    className="absolute top-2 right-2 text-gray-500 hover:text-gray-300"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedNode(null);
+                    }}
+                  >
+                    ✕
+                  </button>
+                )}
               </div>
             )}
           </div>
