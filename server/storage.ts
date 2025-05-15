@@ -80,9 +80,14 @@ export class MemStorage implements IStorage {
         logoColor: "#8e44ad",
         mainTechnologies: ["ZK Rollup", "Plonky2", "SP1"],
         introduction: "폴리곤은 이더리움의 확장성 문제를 해결하기 위한 사이드체인 기반 레이어2 솔루션입니다. 높은 트랜잭션 처리량과 낮은 수수료를 제공하며, 다양한 DApp과 DeFi 프로젝트들이 폴리곤 네트워크를 활용하고 있습니다. 폴리곤은 Zero Knowledge 기술에 많은 투자를 하고 있으며, Succinct와의 파트너십을 통해 레이어2 솔루션을 더욱 강화하고 있습니다.",
+        introductionEn: "Polygon is a Layer 2 solution based on sidechains designed to solve Ethereum's scalability issues. It offers high transaction throughput and low fees, with many DApps and DeFi projects utilizing the Polygon network. Polygon has invested heavily in Zero Knowledge technology and is strengthening its Layer 2 solutions through its partnership with Succinct.",
         integrationDetails: [
           "ZK Rollup 최적화: Succinct의 ZK Prover 네트워크와 SP1을 활용하여 폴리곤의 ZK Rollup 솔루션의 증명 생성 속도를 크게 향상시켰습니다. 이를 통해 트랜잭션 확정 시간이 단축되고 네트워크 처리량이 증가했습니다.",
           "SP1 및 ZK 인프라 통합: Succinct의 SP1 기술을 폴리곤 ZK 인프라 전반에 걸쳐 통합하여 확장성과 개발자 경험을 개선했습니다. 이는 폴리곤의 전체 ZK 생태계를 강화하는 데 중요한 역할을 하고 있습니다."
+        ],
+        integrationDetailsEn: [
+          "ZK Rollup Optimization: Utilizing Succinct's ZK Prover network and SP1, Polygon has significantly improved the proof generation speed for its ZK Rollup solution. This has reduced transaction finality time and increased network throughput.",
+          "SP1 and ZK Infrastructure Integration: Succinct's SP1 technology has been integrated across Polygon's ZK infrastructure to improve scalability and developer experience. This plays a crucial role in strengthening Polygon's entire ZK ecosystem."
         ],
         partnershipHighlights: [
           "폴리곤 네트워크의 TPS(초당 트랜잭션 수) 5배 향상",
@@ -90,6 +95,13 @@ export class MemStorage implements IStorage {
           "ZK Rollup 증명 생성 비용 60% 절감",
           "공동 개발한 ZK 도구를 통해 생태계 개발자 50% 증가",
           "Succinct의 ZK Prover를 폴리곤의 Nightfall 솔루션에 통합"
+        ],
+        partnershipHighlightsEn: [
+          "5x increase in TPS (Transactions Per Second) on the Polygon network",
+          "75% reduction in transaction finality time",
+          "60% cost reduction in ZK Rollup proof generation",
+          "50% increase in ecosystem developers through jointly developed ZK tools",
+          "Integration of Succinct's ZK Prover into Polygon's Nightfall solution"
         ]
       },
       {
@@ -102,9 +114,14 @@ export class MemStorage implements IStorage {
         logoColor: "#e74c3c",
         mainTechnologies: ["ZK 사기 증명", "OP Succinct"],
         introduction: "옵티미즘은 이더리움의 확장성을 개선하기 위한 옵티미스틱 롤업 프로토콜입니다. 'Optimistic'이란 트랜잭션이 일단 유효하다고 가정하고 나중에 이의가 제기될 경우 검증한다는 의미로, 이를 통해 메인넷보다 낮은 비용과 높은 처리량을 제공합니다. Succinct와의 파트너십을 통해 OP Succinct와 OP Succinct Lite를 개발하여 ZK 사기 증명을 도입하고, 옵티미스틱 롤업의 단점인 출금 지연 시간과 보안성 문제를 개선하고 있습니다.",
+        introductionEn: "Optimism is an optimistic rollup protocol designed to improve Ethereum's scalability. 'Optimistic' means that transactions are assumed to be valid and verified only if challenged later, providing lower costs and higher throughput than the mainnet. Through its partnership with Succinct, OP Succinct and OP Succinct Lite have been developed to introduce ZK fraud proofs, addressing withdrawal delays and security issues inherent in optimistic rollups.",
         integrationDetails: [
           "ZK 사기 증명 도입: Succinct의 SP1 기술을 활용하여 OP Stack에 ZK 사기 증명 시스템을 통합했습니다. 이를 통해 기존 옵티미스틱 롤업의 7일 챌린지 기간을 대폭 줄이고, 롤업의 보안성과 효율성을 향상시켰습니다.",
           "OP Succinct 및 OP Succinct Lite 개발: Succinct와 옵티미즘은 공동으로 ZK 사기 증명 기술을 통합한 OP Succinct와 OP Succinct Lite 솔루션을 개발하여, 옵티미스틱 롤업의 성능과 보안을 강화했습니다."
+        ],
+        integrationDetailsEn: [
+          "ZK Fraud Proof Introduction: Succinct's SP1 technology has been integrated into the OP Stack to create a ZK fraud proof system. This has significantly reduced the 7-day challenge period of traditional optimistic rollups, improving the security and efficiency of the rollup.",
+          "OP Succinct and OP Succinct Lite Development: Succinct and Optimism have jointly developed OP Succinct and OP Succinct Lite solutions that incorporate ZK fraud proof technology, enhancing the performance and security of optimistic rollups."
         ],
         partnershipHighlights: [
           "L2에서 L1으로의 출금 시간 7일에서 15분으로 단축",
@@ -112,6 +129,13 @@ export class MemStorage implements IStorage {
           "Succinct의 ZK Prover를 활용한 사기 증명(fraud proof) 생성 시간 90% 단축",
           "ZK 사기 증명 기술 공개를 통한 생태계 기여",
           "옵티미스틱 롤업과 ZK 기술의 장점을 결합한 새로운 표준 제시"
+        ],
+        partnershipHighlightsEn: [
+          "Withdrawal time from L2 to L1 reduced from 7 days to 15 minutes",
+          "40% reduction in transaction processing costs through a hybrid model",
+          "90% reduction in fraud proof generation time using Succinct's ZK Prover",
+          "Ecosystem contribution through open-sourcing ZK fraud proof technology",
+          "New standard combining the advantages of optimistic rollups and ZK technology"
         ]
       },
       {

@@ -14,8 +14,11 @@ export const projects = pgTable("projects", {
   logoColor: text("logo_color").notNull(),
   mainTechnologies: text("main_technologies").array(),
   introduction: text("introduction").notNull(),
+  introductionEn: text("introduction_en"),
   integrationDetails: text("integration_details").array(),
+  integrationDetailsEn: text("integration_details_en").array(),
   partnershipHighlights: text("partnership_highlights").array(),
+  partnershipHighlightsEn: text("partnership_highlights_en").array(),
 });
 
 // Technology entity
