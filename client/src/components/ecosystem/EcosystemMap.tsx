@@ -195,40 +195,78 @@ const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
           const position = positions[index + 1]; // +1 because Succinct is at index 0
           if (!position) return null;
           
+          const positionId = index + 1;
+          const nodePosition = nodePositions[positionId] || { 
+            x: position.x - position.radius, 
+            y: position.y - position.radius 
+          };
+          
           return (
-            <Link key={project.id} href={`/projects/${project.slug}`}>
-              <div 
-                className="node absolute z-20 transition-all duration-300 hover:scale-110 cursor-pointer group"
-                style={{
-                  left: position.x - position.radius,
-                  top: position.y - position.radius,
-                  width: position.radius * 2,
-                  height: position.radius * 2
+            <div key={project.id}>
+              <Draggable
+                defaultPosition={nodePosition}
+                onDrag={(e, data) => {
+                  // 드래그 중에는 툴팁을 숨김
+                  setActiveTooltip(null);
+                  
+                  // 노드 위치 업데이트
+                  const newPositions = {...nodePositions};
+                  newPositions[positionId] = {
+                    x: data.x + position.radius,
+                    y: data.y + position.radius
+                  };
+                  setNodePositions(newPositions);
                 }}
+                onStop={() => {
+                  // 드래그가 끝나면 마우스가 올라간 노드의 툴팁 표시
+                }}
+                bounds="parent"
               >
-                <div className={`bg-background rounded-full w-full h-full flex items-center justify-center border-2 ${getColorClass(project.logoColor, 'border')}`}>
-                  <div className="w-full h-full flex items-center justify-center">
-                    <img 
-                      src={getProjectLogo(project.slug)} 
-                      alt={project.name} 
-                      className="w-3/4 h-3/4 object-contain"
-                    />
-                    <div className="tooltip fixed bg-muted p-3 rounded-lg shadow-lg w-48 text-sm opacity-0 transition-opacity group-hover:opacity-100 z-[9999]" 
-                      style={{
-                        top: `${position.y - 100}px`,
-                        left: `${position.x}px`,
-                        transform: 'translateX(-50%)'
-                      }}>
-                      <div className={`font-bold ${getColorClass(project.logoColor, 'text')}`}>{project.name}</div>
-                      <div className="text-xs text-gray-300">{project.description}</div>
-                      <div className="text-xs text-gray-300 mt-1">
-                        {project.mainTechnologies && project.mainTechnologies[0]} 통합
-                      </div>
+                <div 
+                  className="node absolute z-20 transition-all duration-300 cursor-move group"
+                  style={{
+                    width: position.radius * 2,
+                    height: position.radius * 2
+                  }}
+                  onMouseEnter={() => setActiveTooltip(positionId)}
+                  onMouseLeave={() => setActiveTooltip(null)}
+                >
+                  <div className={`bg-background rounded-full w-full h-full flex items-center justify-center border-2 ${getColorClass(project.logoColor, 'border')}`}>
+                    <div className="w-full h-full flex items-center justify-center">
+                      <img 
+                        src={getProjectLogo(project.slug)} 
+                        alt={project.name} 
+                        className="w-3/4 h-3/4 object-contain"
+                      />
                     </div>
                   </div>
                 </div>
-              </div>
-            </Link>
+              </Draggable>
+              {/* Tooltip outside of Draggable component */}
+              {activeTooltip === positionId && (
+                <div 
+                  className="tooltip fixed bg-muted p-3 rounded-lg shadow-lg w-48 text-sm z-[9999]"
+                  style={{
+                    top: `${(nodePositions[positionId]?.y || position.y) - position.radius - 70}px`,
+                    left: `${nodePositions[positionId]?.x || position.x}px`,
+                    transform: 'translateX(-50%)'
+                  }}
+                >
+                  <div className={`font-bold ${getColorClass(project.logoColor, 'text')}`}>{project.name}</div>
+                  <div className="text-xs text-gray-300">{project.description}</div>
+                  <div className="text-xs text-gray-300 mt-1">
+                    {project.mainTechnologies && project.mainTechnologies[0]} {language === 'ko' ? '통합' : 'Integration'}
+                  </div>
+                  <div className="mt-2 text-center">
+                    <Link href={`/projects/${project.slug}`}>
+                      <span className="text-primary text-xs hover:underline">
+                        {language === 'ko' ? '자세히 보기' : 'View Details'}
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
           );
         })}
       </div>
