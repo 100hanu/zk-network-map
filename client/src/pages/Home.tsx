@@ -7,9 +7,11 @@ import TechStackCard from "@/components/ecosystem/TechStackCard";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "wouter";
+import { useTheme } from "@/components/layout/Header";
 
 const Home: React.FC = () => {
   const { toast } = useToast();
+  const { language } = useTheme();
   
   const { data: projects, isLoading, error } = useQuery<Project[]>({
     queryKey: ['/api/projects'],
@@ -22,12 +24,14 @@ const Home: React.FC = () => {
   React.useEffect(() => {
     if (error) {
       toast({
-        title: "오류 발생",
-        description: "프로젝트 데이터를 불러오는 중 문제가 발생했습니다.",
+        title: language === 'ko' ? "오류 발생" : "Error Occurred",
+        description: language === 'ko' 
+          ? "프로젝트 데이터를 불러오는 중 문제가 발생했습니다." 
+          : "There was a problem loading project data.",
         variant: "destructive",
       });
     }
-  }, [error, toast]);
+  }, [error, toast, language]);
 
   return (
     <div className="flex flex-col">
@@ -43,15 +47,17 @@ const Home: React.FC = () => {
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="text-white">ZK Prover</span>{" "}
-              <span className="text-primary neon-glow">네트워크</span>{" "}
-              <span className="text-white">생태계 맵</span>
+              <span className="text-primary neon-glow">{language === 'ko' ? '네트워크' : 'Network'}</span>{" "}
+              <span className="text-white">{language === 'ko' ? '생태계 맵' : 'Ecosystem Map'}</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-8">
-              Succinct와 다양한 블록체인 프로젝트 간의 파트너십 현황을 시각적으로 탐색해보세요
+              {language === 'ko' 
+                ? 'Succinct와 다양한 블록체인 프로젝트 간의 파트너십 현황을 시각적으로 탐색해보세요'
+                : 'Visually explore partnerships between Succinct and various blockchain projects'}
             </p>
             <Button variant="neon" size="pillLg" asChild>
               <Link href="#ecosystem-map">
-                생태계 탐색하기
+                {language === 'ko' ? '생태계 탐색하기' : 'Explore Ecosystem'}
               </Link>
             </Button>
           </div>
@@ -62,9 +68,13 @@ const Home: React.FC = () => {
       <section id="ecosystem-map" className="py-16 bg-background/90">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold mb-4">Succinct ZK 생태계 맵</h2>
+            <h2 className="text-3xl font-bold mb-4">
+              {language === 'ko' ? 'Succinct ZK 생태계 맵' : 'Succinct ZK Ecosystem Map'}
+            </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Succinct의 ZK Prover 네트워크와 주요 파트너십 프로젝트들을 살펴보고 각 연결의 기술적 특성을 확인하세요
+              {language === 'ko' 
+                ? 'Succinct의 ZK Prover 네트워크와 주요 파트너십 프로젝트들을 살펴보고 각 연결의 기술적 특성을 확인하세요'
+                : 'Explore Succinct\'s ZK Prover network and key partnership projects, and check the technical characteristics of each connection'}
             </p>
           </div>
 

@@ -60,7 +60,7 @@ const ProjectDetail: React.FC = () => {
       <Link href="/">
         <Button variant="ghost" className="mb-6">
           <ChevronLeft className="mr-2 h-4 w-4" />
-          에코시스템 맵으로 돌아가기
+          {language === 'ko' ? '에코시스템 맵으로 돌아가기' : 'Back to Ecosystem Map'}
         </Button>
       </Link>
       
@@ -82,21 +82,29 @@ const ProjectDetail: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card className="bg-background/60">
             <CardContent className="pt-6">
-              <h3 className="text-lg font-bold mb-2">파트너십 체결</h3>
-              <p className="text-gray-300">{project.year}년</p>
+              <h3 className="text-lg font-bold mb-2">
+                {language === 'ko' ? '파트너십 체결' : 'Partnership Date'}
+              </h3>
+              <p className="text-gray-300">
+                {language === 'ko' ? `${project.year}년` : `${project.year}`}
+              </p>
             </CardContent>
           </Card>
           <Card className="bg-background/60">
             <CardContent className="pt-6">
-              <h3 className="text-lg font-bold mb-2">통합 상태</h3>
+              <h3 className="text-lg font-bold mb-2">
+                {language === 'ko' ? '통합 상태' : 'Integration Status'}
+              </h3>
               <p className={getColorClass(project.logoColor, 'text')}>{project.status}</p>
             </CardContent>
           </Card>
           <Card className="bg-background/60">
             <CardContent className="pt-6">
-              <h3 className="text-lg font-bold mb-2">주요 기술</h3>
+              <h3 className="text-lg font-bold mb-2">
+                {language === 'ko' ? '주요 기술' : 'Key Technologies'}
+              </h3>
               <div className="flex flex-wrap gap-2">
-                {project.mainTechnologies.map((tech, index) => (
+                {project.mainTechnologies?.map((tech, index) => (
                   <span 
                     key={index} 
                     className={`bg-background px-3 py-1 rounded-full text-xs ${getColorClass(project.logoColor, 'text')} border ${getColorClass(project.logoColor, 'border')}`}
@@ -110,15 +118,19 @@ const ProjectDetail: React.FC = () => {
         </div>
 
         <div className="mb-8">
-          <h3 className="text-xl font-bold mb-4">프로젝트 소개</h3>
+          <h3 className="text-xl font-bold mb-4">
+            {language === 'ko' ? '프로젝트 소개' : 'Project Introduction'}
+          </h3>
           <p className="text-gray-300 whitespace-pre-line">
             {project.introduction}
           </p>
         </div>
 
         <div className="mb-8">
-          <h3 className="text-xl font-bold mb-4">Succinct와의 기술적 연결</h3>
-          {project.integrationDetails.map((detail, index) => {
+          <h3 className="text-xl font-bold mb-4">
+            {language === 'ko' ? 'Succinct와의 기술적 연결' : 'Technical Integration with Succinct'}
+          </h3>
+          {project.integrationDetails?.map((detail, index) => {
             const [title, description] = detail.split(': ');
             return (
               <Card key={index} className="bg-background/60 mb-4">
@@ -134,9 +146,11 @@ const ProjectDetail: React.FC = () => {
         </div>
 
         <div className="mb-8">
-          <h3 className="text-xl font-bold mb-4">파트너십 핵심 내용</h3>
+          <h3 className="text-xl font-bold mb-4">
+            {language === 'ko' ? '파트너십 핵심 내용' : 'Partnership Highlights'}
+          </h3>
           <ul className="list-disc list-inside space-y-2 text-gray-300">
-            {project.partnershipHighlights.map((highlight, index) => (
+            {project.partnershipHighlights?.map((highlight, index) => (
               <li key={index}>{highlight}</li>
             ))}
           </ul>
@@ -145,19 +159,25 @@ const ProjectDetail: React.FC = () => {
         <div className="flex justify-center">
           <Button variant="neon" size="lg">
             <FileText className="mr-2 h-4 w-4" />
-            공식 파트너십 문서 확인
+            {language === 'ko' ? '공식 파트너십 문서 확인' : 'View Official Partnership Documents'}
           </Button>
         </div>
       </div>
       
       <div className="text-center mt-12">
-        <h3 className="text-xl font-bold mb-6">다른 프로젝트 둘러보기</h3>
+        <h3 className="text-xl font-bold mb-6">
+          {language === 'ko' ? '다른 프로젝트 둘러보기' : 'Explore Other Projects'}
+        </h3>
         <div className="flex flex-wrap justify-center gap-4">
           <Button variant="outlineNeon" asChild>
-            <Link href="/">에코시스템 맵으로 돌아가기</Link>
+            <Link href="/">
+              {language === 'ko' ? '에코시스템 맵으로 돌아가기' : 'Return to Ecosystem Map'}
+            </Link>
           </Button>
           <Button variant="outline" asChild>
-            <Link href="/tech-stack">기술 스택 살펴보기</Link>
+            <Link href="/tech-stack">
+              {language === 'ko' ? '기술 스택 살펴보기' : 'Explore Technology Stack'}
+            </Link>
           </Button>
         </div>
       </div>
