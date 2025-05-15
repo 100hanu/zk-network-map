@@ -7,7 +7,6 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import ProjectDetail from "@/pages/ProjectDetail";
 import TechStack from "@/pages/TechStack";
-import Contact from "@/pages/Contact";
 import Header, { ThemeProvider } from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AnimatedBackground from "@/components/ui/animated-background";
@@ -18,7 +17,6 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/projects/:slug" component={ProjectDetail} />
       <Route path="/tech-stack" component={TechStack} />
-      <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>
   );

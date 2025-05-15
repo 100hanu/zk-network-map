@@ -83,18 +83,20 @@ const TechStack: React.FC = () => {
                     {tech.description}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {tech.benefits.map((benefit, index) => (
+                    {tech.benefits?.map((benefit, index) => (
                       <span key={index} className="bg-background px-3 py-1 rounded-full text-xs text-gray-300">
                         {benefit}
                       </span>
                     ))}
                   </div>
-                  <Button variant="ghost" className="text-primary hover:underline text-sm group">
-                    기술 문서 보기 
-                    <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14"></path>
-                      <path d="m12 5 7 7-7 7"></path>
-                    </svg>
+                  <Button variant="ghost" className="text-primary hover:underline text-sm group" asChild>
+                    <a href="https://succinctlabs.notion.site/Succinct-Truth-Prover-Writing-Topics-1dde020fb42f8041b34ee1ab815efbf9" target="_blank" rel="noopener noreferrer">
+                      기술 문서 보기 
+                      <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                      </svg>
+                    </a>
                   </Button>
                 </div>
               ))
@@ -150,9 +152,9 @@ const TechStack: React.FC = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="neon" size="pillLg" asChild>
-                <Link href="/contact">
-                  문의하기
-                </Link>
+                <a href="https://succinctlabs.notion.site/Succinct-Truth-Prover-Writing-Topics-1dde020fb42f8041b34ee1ab815efbf9" target="_blank" rel="noopener noreferrer">
+                  기술 문서 보기
+                </a>
               </Button>
               <Button variant="outlineNeon" size="pill" asChild>
                 <Link href="/">

@@ -153,11 +153,11 @@ const Header: React.FC = () => {
               </span>
             </Link>
             
-            <Link href="/contact">
+            <a href="https://linktr.ee/KSW_CRYPTO" target="_blank" rel="noopener noreferrer">
               <span className={`font-medium hover:text-primary transition-colors cursor-pointer ${location === '/contact' ? 'text-primary' : 'text-white'}`}>
-                {language === 'ko' ? '문의하기' : 'Contact'}
+                {language === 'ko' ? '만든이' : 'Creator'}
               </span>
-            </Link>
+            </a>
 
             <div className="flex items-center gap-2 ml-2">
               <Button 
@@ -223,11 +223,11 @@ const Header: React.FC = () => {
                     </span>
                   </Link>
                   
-                  <Link href="/contact" onClick={() => setIsOpen(false)}>
+                  <a href="https://linktr.ee/KSW_CRYPTO" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
                     <span className={`py-2 hover:text-primary cursor-pointer ${location === '/contact' ? 'text-primary' : 'text-white'}`}>
-                      {language === 'ko' ? '문의하기' : 'Contact'}
+                      {language === 'ko' ? '만든이' : 'Creator'}
                     </span>
-                  </Link>
+                  </a>
 
                   <div className="border-t border-gray-800 pt-4 mt-2">
                     <div className="flex items-center gap-4">
