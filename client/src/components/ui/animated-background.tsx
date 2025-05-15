@@ -243,7 +243,7 @@ const AnimatedBackground: React.FC = () => {
   return (
     <canvas 
       ref={canvasRef} 
-      className="fixed inset-0 w-full h-full -z-10 opacity-50 pointer-events-none"
+      className="fixed inset-0 w-full h-full -z-10 opacity-70 pointer-events-none"
     />
   );
 };

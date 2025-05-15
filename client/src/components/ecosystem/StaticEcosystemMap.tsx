@@ -215,11 +215,9 @@ const StaticEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
                   {language === 'ko' ? ' 통합' : ' Integration'}
                 </div>
                 <div className="mt-3 text-center pt-2 border-t border-gray-700">
-                  <Link href={`/projects/${project.slug}`}>
-                    <a className="inline-flex items-center text-primary text-sm font-medium hover:underline">
-                      {language === 'ko' ? '자세히 보기' : 'View Details'} 
-                      <ArrowRight className="ml-1 h-4 w-4" />
-                    </a>
+                  <Link href={`/projects/${project.slug}`} className="inline-flex items-center text-primary text-sm font-medium hover:underline">
+                    {language === 'ko' ? '자세히 보기' : 'View Details'} 
+                    <ArrowRight className="ml-1 h-4 w-4" />
                   </Link>
                 </div>
                 <button 

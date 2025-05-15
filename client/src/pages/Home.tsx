@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "wouter";
 import { useLanguage } from "@/components/layout/Header";
+import AnimatedBackground from "@/components/ui/animated-background";
 
 const Home: React.FC = () => {
   const { toast } = useToast();
@@ -35,13 +36,11 @@ const Home: React.FC = () => {
 
   return (
     <div className="flex flex-col">
+      {/* 3D 애니메이션 배경 */}
+      <AnimatedBackground />
+      
       {/* 히어로 섹션 */}
-      <section className="relative pt-24 pb-12 overflow-hidden" 
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=600&q=80')",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
-        }}>
+      <section className="relative pt-24 pb-12 overflow-hidden">
         <div className="absolute inset-0 bg-background/75"></div>
         <div className="container mx-auto px-4 py-16 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
@@ -146,13 +145,9 @@ const Home: React.FC = () => {
       </section>
 
       {/* 기술 스택 섹션 */}
-      <section className="py-16 bg-background">
-        <div className="relative" style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=600&q=80')",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
-        }}>
-          <div className="absolute inset-0 bg-background/80"></div>
+      <section className="py-16 bg-background relative z-10">
+        <div className="relative">
+          <div className="absolute inset-0 bg-background/50"></div>
           <div className="container mx-auto px-4 py-16 relative">
             <div className="max-w-3xl mx-auto text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">
