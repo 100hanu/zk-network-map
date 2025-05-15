@@ -362,9 +362,14 @@ export class MemStorage implements IStorage {
         logoColor: "#1E88E5",
         mainTechnologies: ["vApps", "SP1", "크로스체인"],
         introduction: "LayerZero는 서로 다른 블록체인 간의 메시지 전송을 가능하게 하는 옴니체인 상호운용성 프로토콜입니다. 기존의 크로스체인 솔루션과는 달리, LayerZero는 신뢰 가정을 최소화하고 보안을 강화한 메시지 전달 방식을 제공합니다. Succinct와의 파트너십은 vApps(검증 가능한 애플리케이션) 개발을 위한 새로운 패러다임을 도입하여, 웹3 수준의 보안성과 투명성을 제공하는 데 중점을 두고 있습니다.",
+        introductionEn: "LayerZero is an omnichain interoperability protocol that enables message transmission between different blockchains. Unlike existing cross-chain solutions, LayerZero provides a message delivery method that minimizes trust assumptions and enhances security. The partnership with Succinct focuses on introducing a new paradigm for vApps (verifiable applications) development, providing web3-level security and transparency.",
         integrationDetails: [
           "vApps 개발 패러다임 도입: Succinct의 SP1 기술을 활용하여, LayerZero 생태계에 vApps(검증 가능한 애플리케이션) 개발 패러다임을 도입했습니다. 이를 통해 애플리케이션의 실행과 상태 변경에 대한 검증 가능성을 높였습니다.",
           "크로스체인 메시지의 ZK 증명: LayerZero의 크로스체인 메시지 전송에 ZK 증명을 적용하여, 메시지의 정확성과 신뢰성을 보장하고, 다양한 블록체인 간의 안전한 상호 작용을 가능하게 했습니다."
+        ],
+        integrationDetailsEn: [
+          "Introduction of vApps Development Paradigm: Utilized Succinct's SP1 technology to introduce the vApps (verifiable applications) development paradigm to the LayerZero ecosystem. This enhanced the verifiability of application execution and state changes.",
+          "ZK Proofs for Cross-chain Messages: Applied ZK proofs to LayerZero's cross-chain message transmission, ensuring the accuracy and reliability of messages and enabling safe interactions between various blockchains."
         ],
         partnershipHighlights: [
           "vApps 패러다임을 통한 웹3 애플리케이션의 보안성 강화",
@@ -372,6 +377,13 @@ export class MemStorage implements IStorage {
           "옴니체인 환경에서의 사용자 경험 향상",
           "다양한 블록체인 간의 상호 운용성 확대",
           "ZK 기술을 활용한 새로운 탈중앙화 애플리케이션 개발 가능성 확장"
+        ],
+        partnershipHighlightsEn: [
+          "Enhanced security of web3 applications through the vApps paradigm",
+          "70% reduction in verification costs for cross-chain transactions",
+          "Improved user experience in omnichain environments",
+          "Expanded interoperability between various blockchains",
+          "Extended possibilities for developing new decentralized applications utilizing ZK technology"
         ]
       },
       {
@@ -384,9 +396,14 @@ export class MemStorage implements IStorage {
         logoColor: "#F7931A",
         mainTechnologies: ["Bitcoin", "ZK 증명", "SP1"],
         introduction: "BitVM은 비트코인 블록체인에서 복잡한 계산을 오프체인으로 수행하고, 그 결과를 비트코인 블록체인에서 검증할 수 있게 하는 혁신적인 기술입니다. 이를 통해 비트코인의 제한된 스크립팅 기능을 확장하여, 더 복잡한 스마트 컨트랙트 및 애플리케이션을 구현할 수 있습니다. Succinct와의 파트너십은 SP1을 활용하여 비트코인에서의 ZK 증명 검증을 가능하게 함으로써, 비트코인의 프로그래머블성과 확장성을 향상시키는 데 중점을 두고 있습니다.",
+        introductionEn: "BitVM is an innovative technology that allows complex calculations to be performed off-chain in the Bitcoin blockchain, with the results verifiable on the Bitcoin blockchain. This expands Bitcoin's limited scripting capabilities, enabling more complex smart contracts and applications. The partnership with Succinct focuses on enhancing Bitcoin's programmability and scalability by enabling ZK proof verification in Bitcoin using SP1.",
         integrationDetails: [
           "비트코인에서의 ZK 증명 검증: Succinct의 SP1 기술을 활용하여, 비트코인 블록체인에서 ZK 증명을 효율적으로 검증할 수 있는 메커니즘을 개발했습니다. 이를 통해 비트코인의 프로그래머블성을 크게 확장했습니다.",
           "BitVM과 SP1의 통합: BitVM 프레임워크와 Succinct의 SP1 기술을 통합하여, 오프체인에서 복잡한 계산을 수행하고 그 결과를 효율적으로 비트코인 블록체인에 증명할 수 있게 되었습니다."
+        ],
+        integrationDetailsEn: [
+          "ZK Proof Verification in Bitcoin: Developed a mechanism to efficiently verify ZK proofs on the Bitcoin blockchain using Succinct's SP1 technology. This greatly expanded Bitcoin's programmability.",
+          "Integration of BitVM and SP1: Integrated the BitVM framework and Succinct's SP1 technology, enabling complex calculations to be performed off-chain and efficiently proven on the Bitcoin blockchain."
         ],
         partnershipHighlights: [
           "비트코인에서의 ZK 증명 검증 가능성 확보",
@@ -394,6 +411,13 @@ export class MemStorage implements IStorage {
           "비트코인 블록체인에서의 복잡한 애플리케이션 구현 가능성 확대",
           "기존 비트코인 인프라와의 완벽한 호환성 유지",
           "ZK 기술을 활용한 비트코인 생태계의 새로운 가능성 개척"
+        ],
+        partnershipHighlightsEn: [
+          "Secured ZK proof verification capability in Bitcoin",
+          "Enhanced Bitcoin scalability through on-chain verification of off-chain calculations",
+          "Expanded possibilities for implementing complex applications on the Bitcoin blockchain",
+          "Maintained perfect compatibility with existing Bitcoin infrastructure",
+          "Pioneered new possibilities for the Bitcoin ecosystem utilizing ZK technology"
         ]
       },
       {
@@ -406,9 +430,14 @@ export class MemStorage implements IStorage {
         logoColor: "#7B68EE",
         mainTechnologies: ["데이터 가용성", "SP1", "모듈형 블록체인"],
         introduction: "Celestia는 모듈형 블록체인 아키텍처를 위한 데이터 가용성(DA) 네트워크로, 실행 레이어와 합의 레이어를 분리하는 새로운 패러다임을 제시합니다. 이를 통해 블록체인 개발자들은 자신만의 실행 환경을 구축하면서도, Celestia의 안정적인 데이터 가용성 레이어를 활용할 수 있습니다. Succinct와의 파트너십은 SP1을 활용하여 Celestia의 데이터 가용성 레이어에 ZK 기술을 통합함으로써, 데이터 가용성의 효율성과 신뢰성을 높이는 데 중점을 두고 있습니다.",
+        introductionEn: "Celestia is a data availability (DA) network for modular blockchain architecture, presenting a new paradigm that separates the execution layer from the consensus layer. This allows blockchain developers to build their own execution environments while utilizing Celestia's reliable data availability layer. The partnership with Succinct focuses on enhancing the efficiency and reliability of data availability by integrating ZK technology into Celestia's data availability layer using SP1.",
         integrationDetails: [
           "ZK 기반 데이터 가용성: Succinct의 SP1 기술을 Celestia의 데이터 가용성 레이어에 통합하여, 데이터 가용성 증명의 효율성과 확장성을 향상시켰습니다.",
           "모듈형 블록체인을 위한 ZK 인프라: Celestia와 Succinct는 공동으로 모듈형 블록체인 아키텍처를 위한 ZK 기반 인프라를 구축하고 있으며, 이를 통해 다양한 블록체인 애플리케이션의 개발과 확장을 지원하고 있습니다."
+        ],
+        integrationDetailsEn: [
+          "ZK-based Data Availability: Integrated Succinct's SP1 technology into Celestia's data availability layer, improving the efficiency and scalability of data availability proofs.",
+          "ZK Infrastructure for Modular Blockchains: Celestia and Succinct are jointly building ZK-based infrastructure for modular blockchain architecture, supporting the development and expansion of various blockchain applications."
         ],
         partnershipHighlights: [
           "ZK 증명을 통한 데이터 가용성 검증의 효율성 향상",
@@ -416,6 +445,13 @@ export class MemStorage implements IStorage {
           "다양한 실행 레이어와의 호환성 강화",
           "데이터 가용성 샘플링의 신뢰성 및 성능 개선",
           "ZK 기술을 활용한 새로운 블록체인 아키텍처 모델 개발"
+        ],
+        partnershipHighlightsEn: [
+          "Improved efficiency of data availability verification through ZK proofs",
+          "Reduced data verification costs in modular blockchain environments",
+          "Enhanced compatibility with various execution layers",
+          "Improved reliability and performance of data availability sampling",
+          "Development of new blockchain architecture models utilizing ZK technology"
         ]
       },
       {
@@ -462,9 +498,14 @@ export class MemStorage implements IStorage {
         logoColor: "#27ae60",
         mainTechnologies: ["ZK-EVM", "ZK Coprocessor"],
         introduction: "스크롤은 ZK-EVM(Zero Knowledge Ethereum Virtual Machine)에 초점을 맞춘 레이어2 확장 솔루션입니다. 이더리움의 기존 스마트 컨트랙트와 도구를 그대로 사용할 수 있으면서도 ZK 롤업의 효율성과 보안성을 제공하는 것이 목표입니다. Succinct와의 파트너십은 ZK-EVM의 증명 생성 속도를 크게 향상시키는 데 중점을 두고 있습니다.",
+        introductionEn: "Scroll is a Layer 2 scaling solution focused on ZK-EVM (Zero Knowledge Ethereum Virtual Machine). It aims to provide the efficiency and security of ZK rollups while allowing the use of existing Ethereum smart contracts and tools. The partnership with Succinct focuses on significantly improving the proof generation speed of ZK-EVM.",
         integrationDetails: [
           "ZK-EVM 증명 최적화: Succinct의 ZK Prover 네트워크를 스크롤의 ZK-EVM에 통합하여 증명 생성 과정을 병렬화하고 최적화했습니다. 이를 통해 EVM 실행에 대한 증명 생성 시간이 크게 단축되었습니다.",
           "ZK Coprocessor 구현: Succinct의 ZK Coprocessor 아키텍처를 스크롤 네트워크에 적용하여 복잡한 ZK 계산을 효율적으로 처리할 수 있게 되었습니다. 이는 특히 SNARK 증명 생성 과정에서 큰 성능 향상을 가져왔습니다."
+        ],
+        integrationDetailsEn: [
+          "ZK-EVM Proof Optimization: Integrated Succinct's ZK Prover network into Scroll's ZK-EVM, parallelizing and optimizing the proof generation process. This significantly reduced the proof generation time for EVM execution.",
+          "ZK Coprocessor Implementation: Applied Succinct's ZK Coprocessor architecture to the Scroll network, enabling efficient processing of complex ZK calculations. This brought significant performance improvements, especially in the SNARK proof generation process."
         ],
         partnershipHighlights: [
           "ZK-EVM 증명 생성 시간 8배 단축",
@@ -472,6 +513,13 @@ export class MemStorage implements IStorage {
           "Succinct의 ZK Prover 분산 네트워크를 통한 증명 생성 처리량 10배 향상",
           "이더리움 메인넷과의 완벽한 호환성 유지하며 ZK 롤업 구현",
           "개발자 친화적인 ZK-EVM 도구 공동 개발"
+        ],
+        partnershipHighlightsEn: [
+          "8x reduction in ZK-EVM proof generation time",
+          "75% reduction in proof generation costs per transaction",
+          "10x increase in proof generation throughput through Succinct's distributed ZK Prover network",
+          "Implemented ZK rollups while maintaining perfect compatibility with Ethereum mainnet",
+          "Co-developed developer-friendly ZK-EVM tools"
         ]
       }
     ];
