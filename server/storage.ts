@@ -563,31 +563,67 @@ export class MemStorage implements IStorage {
     // Initialize technologies
     const technologies: InsertTechnology[] = [
       {
-        name: "ZK-SNARK",
-        icon: "lock",
-        description: "영지식 증명 기술의 대표적인 방식으로, 정보를 노출하지 않고 증명을 검증합니다.",
-        descriptionEn: "A prominent method of zero-knowledge proof technology that verifies proofs without exposing information.",
-        benefits: ["낮은 검증 비용", "높은 증명 효율성"],
-        benefitsEn: ["Low verification cost", "High proof efficiency"],
-        documentationLink: "/tech/zk-snark"
+        name: "SP1 – Modular zkVM",
+        icon: "cpu",
+        description: "Succinct의 자체 zkVM으로, Rust로 작성되었으며 ZK-friendly 연산에 최적화되어 있습니다. 다양한 proving backend(RiscZero, Halo2, Nova 등)와 호환되는 모듈식 설계가 특징입니다.",
+        descriptionEn: "Succinct's proprietary zkVM, written in Rust and optimized for ZK-friendly operations. Features a modular design compatible with various proving backends (RiscZero, Halo2, Nova, etc.).",
+        benefits: [
+          "Rust 기반의 효율적인 zkVM 구현", 
+          "다양한 proving backend와 호환 가능", 
+          "ZK-friendly 연산 최적화", 
+          "플러그형 구조로 쉬운 확장성", 
+          "추상화된 증명 환경 제공"
+        ],
+        benefitsEn: [
+          "Efficient zkVM implementation based on Rust", 
+          "Compatible with various proving backends", 
+          "Optimization for ZK-friendly operations", 
+          "Easy extensibility through plug-in architecture", 
+          "Provides abstracted proving environment"
+        ],
+        documentationLink: "/tech/sp1-zkvm"
       },
       {
-        name: "Plonky2",
-        icon: "bolt",
-        description: "Succinct의 핵심 증명 시스템으로, 재귀적 증명을 가능하게 하는 혁신적인 ZK 기술입니다.",
-        descriptionEn: "Succinct's core proof system, an innovative ZK technology that enables recursive proofs.",
-        benefits: ["초고속 증명 생성", "재귀적 증명 지원"],
-        benefitsEn: ["Ultra-fast proof generation", "Recursive proof support"],
-        documentationLink: "/tech/plonky2"
+        name: "Real-Time Proving Layer",
+        icon: "zap",
+        description: "\"Proof-as-you-call\" 구조를 구현한 실시간 증명 레이어입니다. 사용자가 HTTP/RPC 요청을 하면 자동으로 ZK proof가 생성되고, 온체인 검증까지 연결되는 실시간 흐름을 제공합니다.",
+        descriptionEn: "A real-time proving layer implementing the \"Proof-as-you-call\" structure. When users make HTTP/RPC requests, ZK proofs are automatically generated, providing a real-time flow connected to on-chain verification.",
+        benefits: [
+          "HTTP/RPC 요청 시 자동 ZK proof 생성", 
+          "실시간 온체인 검증 연동", 
+          "추상화된 증명 인프라 제공", 
+          "개발자 친화적 API 설계", 
+          "강력한 확장성과 빠른 응답 시간"
+        ],
+        benefitsEn: [
+          "Automatic ZK proof generation on HTTP/RPC requests", 
+          "Real-time on-chain verification integration", 
+          "Abstracted proving infrastructure", 
+          "Developer-friendly API design", 
+          "Powerful scalability and fast response time"
+        ],
+        documentationLink: "/tech/realtime-proving"
       },
       {
-        name: "ZK Coprocessor",
-        icon: "microchip",
-        description: "복잡한 계산을 오프체인에서 처리하고 결과만 온체인에 검증하는 혁신적인 아키텍처입니다.",
-        descriptionEn: "An innovative architecture that processes complex calculations off-chain and verifies only the results on-chain.",
-        benefits: ["오프체인 계산", "온체인 검증"],
-        benefitsEn: ["Off-chain computation", "On-chain verification"],
-        documentationLink: "/tech/zk-coprocessor"
+        name: "vApps (Verifiable Applications)",
+        icon: "layers",
+        description: "기존 web2/web3 앱들을 ZK 기반 verifiable app으로 변환해주는 프레임워크입니다. Proof 생성을 전면에 드러내지 않으면서도, 실제로 어떤 동작이 증명되었는지 trustlessly 제공합니다.",
+        descriptionEn: "A framework that transforms existing web2/web3 apps into ZK-based verifiable apps. While not exposing proof generation to the front, it trustlessly provides what actions have been proven.",
+        benefits: [
+          "기존 앱의 ZK 기반 앱으로의 원활한 전환", 
+          "일반 사용자를 위한 투명한 UX 제공", 
+          "개발자를 위한 ZK 추상화 레이어", 
+          "백엔드에서의 자동화된 증명 처리", 
+          "강화된 데이터 신뢰성과 투명성"
+        ],
+        benefitsEn: [
+          "Seamless transition of existing apps to ZK-based apps", 
+          "Transparent UX for general users", 
+          "ZK abstraction layer for developers", 
+          "Automated proof processing in the backend", 
+          "Enhanced data reliability and transparency"
+        ],
+        documentationLink: "/tech/verifiable-apps"
       }
     ];
 

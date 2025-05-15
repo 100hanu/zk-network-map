@@ -92,24 +92,7 @@ const Home: React.FC = () => {
             <StaticEcosystemMap projects={projects || []} />
           )}
           
-          <div className="text-center mb-10">
-            <p className="text-gray-300 mb-4">
-              {language === 'ko' 
-                ? '네트워크 노드를 클릭하여 각 프로젝트의 상세 정보를 확인해보세요'
-                : 'Click on a network node to view details of each project'}
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button variant="outlineNeon">
-                {language === 'ko' ? '모든 연결 보기' : 'View All Connections'}
-              </Button>
-              <Button variant="outlineNeon">
-                {language === 'ko' ? '기술 스택별 필터링' : 'Filter by Tech Stack'}
-              </Button>
-              <Button variant="outlineNeon">
-                {language === 'ko' ? '시간순 보기' : 'View Chronologically'}
-              </Button>
-            </div>
-          </div>
+
         </div>
       </section>
 
