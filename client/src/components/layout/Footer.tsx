@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 import { FaTwitter, FaDiscord, FaGithub } from "react-icons/fa";
 import { SiTelegram } from "react-icons/si";
 import { ExternalLink } from "lucide-react";
-import { useTheme } from "./Header";
+import { useLanguage } from "./Header";
 
 const Footer: React.FC = () => {
-  const { language } = useTheme();
+  const { language } = useLanguage();
   
   return (
     <footer className="bg-background py-12">

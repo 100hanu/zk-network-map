@@ -7,11 +7,11 @@ import TechStackCard from "@/components/ecosystem/TechStackCard";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "wouter";
-import { useTheme } from "@/components/layout/Header";
+import { useLanguage } from "@/components/layout/Header";
 
 const Home: React.FC = () => {
   const { toast } = useToast();
-  const { language } = useTheme();
+  const { language } = useLanguage();
   
   const { data: projects, isLoading, error } = useQuery<Project[]>({
     queryKey: ['/api/projects'],

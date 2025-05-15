@@ -17,37 +17,19 @@ import { Project } from "@shared/schema";
 import { 
   ChevronDown, 
   Menu,
-  Moon,
-  Sun,
   Globe,
   ExternalLink
 } from "lucide-react";
 
-// 테마 관리를 위한 인터페이스
-interface ThemeProviderProps {
+// 언어 관리를 위한 인터페이스
+interface LanguageProviderProps {
   children: React.ReactNode;
 }
 
-type Theme = 'dark' | 'light';
 type Language = 'ko' | 'en';
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>('dark');
+export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   const [language, setLanguage] = useState<Language>('ko');
-
-  // 테마 변경 함수
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    if (newTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
-    }
-    localStorage.setItem('theme', newTheme);
-  };
 
   // 언어 변경 함수
   const toggleLanguage = () => {
@@ -56,53 +38,40 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     localStorage.setItem('language', newLanguage);
   };
 
-  // 초기 테마 및 언어 설정
+  // 초기 언어 설정
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as Theme || 'dark';
     const savedLanguage = localStorage.getItem('language') as Language || 'ko';
-    
-    setTheme(savedTheme);
     setLanguage(savedLanguage);
     
-    // 테마 클래스 적용
-    if (savedTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
-    }
+    // 항상 다크모드로 설정
+    document.documentElement.classList.add('dark');
   }, []);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, language, toggleLanguage }}>
+    <LanguageContext.Provider value={{ language, toggleLanguage }}>
       {children}
-    </ThemeContext.Provider>
+    </LanguageContext.Provider>
   );
 };
 
-// 테마 컨텍스트
-interface ThemeContextType {
-  theme: Theme;
-  toggleTheme: () => void;
+// 언어 컨텍스트
+interface LanguageContextType {
   language: Language;
   toggleLanguage: () => void;
 }
 
-const ThemeContext = React.createContext<ThemeContextType>({
-  theme: 'dark',
-  toggleTheme: () => {},
+const LanguageContext = React.createContext<LanguageContextType>({
   language: 'ko',
   toggleLanguage: () => {}
 });
 
-// 테마 및 언어 사용을 위한 훅
-export const useTheme = () => React.useContext(ThemeContext);
+// 언어 사용을 위한 훅
+export const useLanguage = () => React.useContext(LanguageContext);
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
-  const { theme, toggleTheme, language, toggleLanguage } = useTheme();
+  const { language, toggleLanguage } = useLanguage();
   
   const { data: projects } = useQuery<Project[]>({
     queryKey: ['/api/projects'],
@@ -160,14 +129,6 @@ const Header: React.FC = () => {
             </a>
 
             <div className="flex items-center gap-2 ml-2">
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                onClick={toggleTheme}
-                className="rounded-full w-8 h-8 p-0 bg-muted/40 hover:bg-muted/60"
-              >
-                {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              </Button>
               <Button 
                 variant="ghost" 
                 size="icon" 
@@ -231,16 +192,6 @@ const Header: React.FC = () => {
 
                   <div className="border-t border-gray-800 pt-4 mt-2">
                     <div className="flex items-center gap-4">
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
-                        onClick={toggleTheme}
-                        className="flex items-center gap-2"
-                      >
-                        {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-                        {language === 'ko' ? '테마 전환' : 'Toggle Theme'}
-                      </Button>
-
                       <Button 
                         variant="ghost" 
                         size="sm" 

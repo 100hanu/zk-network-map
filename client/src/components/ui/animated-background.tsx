@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useTheme } from '@/components/layout/Header';
 
 const AnimatedBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { theme } = useTheme();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
   useEffect(() => {
@@ -13,7 +11,8 @@ const AnimatedBackground: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     
-    const isDarkTheme = theme === 'dark';
+    // 항상 다크 테마만 사용
+    const isDarkTheme = true;
     
     // 캔버스 크기 설정
     const setCanvasSize = () => {
@@ -239,7 +238,7 @@ const AnimatedBackground: React.FC = () => {
       window.removeEventListener('resize', setCanvasSize);
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [theme, mousePosition]);
+  }, [mousePosition]);
   
   return (
     <canvas 

@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { Project } from "@shared/schema";
 import { getColorClass } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useTheme } from "@/components/layout/Header";
+import { useLanguage } from "@/components/layout/Header";
 import { ArrowRight } from "lucide-react";
 
 // 로고 가져오기
@@ -56,7 +56,7 @@ interface NodePosition {
 
 const StaticEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
   const isMobile = useIsMobile();
-  const { language } = useTheme();
+  const { language } = useLanguage();
   const mapRef = useRef<HTMLDivElement>(null);
   
   // 노드 크기 설정

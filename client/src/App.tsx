@@ -7,7 +7,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import ProjectDetail from "@/pages/ProjectDetail";
 import TechStack from "@/pages/TechStack";
-import Header, { ThemeProvider } from "@/components/layout/Header";
+import Header, { LanguageProvider } from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AnimatedBackground from "@/components/ui/animated-background";
 
@@ -25,7 +25,7 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
+      <LanguageProvider>
         <TooltipProvider>
           <div className="min-h-screen flex flex-col">
             <AnimatedBackground />
@@ -37,7 +37,7 @@ function App() {
           </div>
           <Toaster />
         </TooltipProvider>
-      </ThemeProvider>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }

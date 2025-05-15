@@ -4,14 +4,14 @@ import { Link } from "wouter";
 import { getColorClass } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
-import { useTheme } from "@/components/layout/Header";
+import { useLanguage } from "@/components/layout/Header";
 
 interface ProjectCardProps {
   project: Project;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
-  const { language } = useTheme();
+  const { language } = useLanguage();
   return (
     <Card className="bg-muted/50 border-gray-800 overflow-hidden hover:border-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 card-hover">
       <CardContent className="p-6">

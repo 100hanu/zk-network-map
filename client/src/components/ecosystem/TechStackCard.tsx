@@ -3,14 +3,14 @@ import { Technology } from "@shared/schema";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Lock, Bolt, Cpu } from "lucide-react";
-import { useTheme } from "@/components/layout/Header";
+import { useLanguage } from "@/components/layout/Header";
 
 interface TechStackCardProps {
   technology: Technology;
 }
 
 const TechStackCard: React.FC<TechStackCardProps> = ({ technology }) => {
-  const { language } = useTheme();
+  const { language } = useLanguage();
   const getIcon = () => {
     switch (technology.icon) {
       case 'lock':
