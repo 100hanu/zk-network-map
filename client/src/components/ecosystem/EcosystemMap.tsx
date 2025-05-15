@@ -5,7 +5,7 @@ import { getColorClass } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 // 로고 가져오기
-import succinctLogo from "../../assets/logos/official/succinct-logo.svg";
+import succinctLogo from "../../assets/logos/official/zk-prover-logo.png";
 import ethereumLogo from "../../assets/logos/official/ethereum-logo.svg";
 import polygonLogo from "../../assets/logos/official/polygon-logo.svg";
 import optimismLogo from "../../assets/logos/official/optimism-logo.svg";
@@ -164,10 +164,9 @@ const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
               <div className="w-full h-full flex flex-col items-center justify-center">
                 <img 
                   src={succinctLogo} 
-                  alt="Succinct" 
-                  className="w-3/4 h-3/4 object-contain mb-1"
+                  alt="ZK Prover Network" 
+                  className="w-3/4 h-3/4 object-contain"
                 />
-                <div className="text-xs text-gray-300">ZK Prover Network</div>
               </div>
             </div>
           </div>
