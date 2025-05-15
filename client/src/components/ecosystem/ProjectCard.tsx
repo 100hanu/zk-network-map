@@ -48,11 +48,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 : project.introductionEn || project.introduction)}
         </p>
         <div className="flex justify-between items-center">
-          <Link href={`/projects/${project.slug}`}>
-            <a className="text-primary text-sm flex items-center group button-glow px-3 py-1 rounded-md">
-              {language === 'ko' ? '자세히 보기' : 'View Details'}
-              <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+          <Link href={`/projects/${project.slug}`} className="text-primary text-sm flex items-center group button-glow px-3 py-1 rounded-md">
+            {language === 'ko' ? '자세히 보기' : 'View Details'}
+            <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Link>
           <span className="text-xs text-gray-400 neon-glow">
             {language === 'ko' 
