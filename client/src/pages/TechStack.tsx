@@ -53,23 +53,29 @@ const TechStack: React.FC = () => {
                 <div key={tech.id} className="bg-muted/70 backdrop-blur-sm rounded-xl p-8 border border-gray-800 hover:border-primary transition-all">
                   <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" className="text-primary text-xl" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      {tech.icon === 'lock' && <path d="M19 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2z"></path>}
-                      {tech.icon === 'lock' && <path d="M7 11V7a5 5 0 0 1 9.9-1"></path>}
-                      {tech.icon === 'bolt' && <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>}
-                      {tech.icon === 'microchip' && <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>}
-                      {tech.icon === 'microchip' && <path d="M9 9h6v6H9z"></path>}
-                      {tech.icon === 'microchip' && <path d="M4 9h.01"></path>}
-                      {tech.icon === 'microchip' && <path d="M4 12h.01"></path>}
-                      {tech.icon === 'microchip' && <path d="M4 15h.01"></path>}
-                      {tech.icon === 'microchip' && <path d="M9 4v.01"></path>}
-                      {tech.icon === 'microchip' && <path d="M12 4v.01"></path>}
-                      {tech.icon === 'microchip' && <path d="M15 4v.01"></path>}
-                      {tech.icon === 'microchip' && <path d="M20 9h.01"></path>}
-                      {tech.icon === 'microchip' && <path d="M20 12h.01"></path>}
-                      {tech.icon === 'microchip' && <path d="M20 15h.01"></path>}
-                      {tech.icon === 'microchip' && <path d="M9 20v.01"></path>}
-                      {tech.icon === 'microchip' && <path d="M12 20v.01"></path>}
-                      {tech.icon === 'microchip' && <path d="M15 20v.01"></path>}
+                      {/* SP1 – Modular zkVM - CPU */}
+                      {tech.icon === 'cpu' && <>
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                        <rect x="9" y="9" width="6" height="6"></rect>
+                        <line x1="9" y1="2" x2="9" y2="4"></line>
+                        <line x1="15" y1="2" x2="15" y2="4"></line>
+                        <line x1="9" y1="20" x2="9" y2="22"></line>
+                        <line x1="15" y1="20" x2="15" y2="22"></line>
+                        <line x1="20" y1="9" x2="22" y2="9"></line>
+                        <line x1="20" y1="14" x2="22" y2="14"></line>
+                        <line x1="2" y1="9" x2="4" y2="9"></line>
+                        <line x1="2" y1="14" x2="4" y2="14"></line>
+                      </>}
+                      
+                      {/* Real-Time Proving Layer - Zap/Lightning */}
+                      {tech.icon === 'zap' && <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>}
+                      
+                      {/* vApps (Verifiable Applications) - Layers */}
+                      {tech.icon === 'layers' && <>
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                      </>}
                     </svg>
                   </div>
                   <h3 className="text-xl font-bold mb-3">{tech.name}</h3>
