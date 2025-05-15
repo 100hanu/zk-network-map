@@ -3,6 +3,8 @@ import { Link } from "wouter";
 import { Project } from "@shared/schema";
 import { getColorClass } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
+import Draggable from "react-draggable";
+import { useTheme } from "@/components/layout/Header";
 
 // 로고 가져오기
 import succinctLogo from "../../assets/logos/official/zk-prover-logo.png";
@@ -70,9 +72,12 @@ const getProjectLogo = (slug: string): string => {
 
 const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
   const [positions, setPositions] = useState<NodePosition[]>([]);
+  const [nodePositions, setNodePositions] = useState<{[key: number]: {x: number, y: number}}>({});
+  const [activeTooltip, setActiveTooltip] = useState<number | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+  const { language } = useTheme();
   
   // Set up node positions
   useEffect(() => {
@@ -135,14 +140,19 @@ const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
             if (index === 0) return null; // Skip the first node (Succinct)
             
             // Connection from center to this node
+            const fromX = nodePositions[0]?.x || positions[0].x;
+            const fromY = nodePositions[0]?.y || positions[0].y;
+            const toX = nodePositions[index + 1]?.x || pos.x;
+            const toY = nodePositions[index + 1]?.y || pos.y;
+            
             return (
               <line
                 key={`connection-${index}`}
                 className="connection"
-                x1={positions[0].x}
-                y1={positions[0].y}
-                x2={pos.x}
-                y2={pos.y}
+                x1={fromX}
+                y1={fromY}
+                x2={toX}
+                y2={toY}
                 stroke="hsl(var(--primary))"
               />
             );
@@ -151,25 +161,33 @@ const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
         
         {/* Succinct central node */}
         {positions.length > 0 && (
-          <div 
-            className="node absolute z-30 transition-all duration-300 hover:scale-110 cursor-pointer"
-            style={{
-              left: positions[0].x - positions[0].radius,
-              top: positions[0].y - positions[0].radius,
-              width: positions[0].radius * 2,
-              height: positions[0].radius * 2
+          <Draggable
+            defaultPosition={{x: positions[0].x - positions[0].radius, y: positions[0].y - positions[0].radius}}
+            onDrag={(e, data) => {
+              const newPositions = {...nodePositions};
+              newPositions[0] = {x: data.x + positions[0].radius, y: data.y + positions[0].radius};
+              setNodePositions(newPositions);
             }}
+            bounds="parent"
           >
-            <div className="bg-background rounded-lg w-full h-full flex items-center justify-center border-4 border-primary neon-border">
-              <div className="w-full h-full flex flex-col items-center justify-center p-2">
-                <img 
-                  src={succinctLogo} 
-                  alt="ZK Prover Network" 
-                  className="w-4/5 h-4/5 object-contain"
-                />
+            <div 
+              className="node absolute z-30 transition-all duration-300 cursor-move"
+              style={{
+                width: positions[0].radius * 2,
+                height: positions[0].radius * 2
+              }}
+            >
+              <div className="bg-background rounded-lg w-full h-full flex items-center justify-center border-4 border-primary neon-border">
+                <div className="w-full h-full flex flex-col items-center justify-center p-2">
+                  <img 
+                    src={succinctLogo} 
+                    alt="ZK Prover Network" 
+                    className="w-4/5 h-4/5 object-contain"
+                  />
+                </div>
               </div>
             </div>
-          </div>
+          </Draggable>
         )}
         
         {/* Project nodes */}
