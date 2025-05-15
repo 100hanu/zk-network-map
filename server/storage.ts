@@ -630,12 +630,39 @@ export class MemStorage implements IStorage {
     // Insert projects and technologies
     projects.forEach(project => {
       const id = this.projectIdCounter++;
-      this.projects.set(id, { ...project, id });
+      const newProject: Project = {
+        id,
+        name: project.name,
+        slug: project.slug,
+        description: project.description,
+        logo: project.logo,
+        year: project.year,
+        status: project.status,
+        logoColor: project.logoColor,
+        mainTechnologies: project.mainTechnologies || null,
+        introduction: project.introduction,
+        introductionEn: project.introductionEn || null,
+        integrationDetails: project.integrationDetails || null,
+        integrationDetailsEn: project.integrationDetailsEn || null,
+        partnershipHighlights: project.partnershipHighlights || null,
+        partnershipHighlightsEn: project.partnershipHighlightsEn || null
+      };
+      this.projects.set(id, newProject);
     });
 
-    technologies.forEach(technology => {
+    technologies.forEach(tech => {
       const id = this.technologyIdCounter++;
-      this.technologies.set(id, { ...technology, id });
+      const newTechnology: Technology = {
+        id,
+        name: tech.name,
+        description: tech.description,
+        icon: tech.icon,
+        descriptionEn: tech.descriptionEn || null,
+        benefits: tech.benefits || null,
+        benefitsEn: tech.benefitsEn || null,
+        documentationLink: tech.documentationLink
+      };
+      this.technologies.set(id, newTechnology);
     });
 
     // Create project-technology relationships

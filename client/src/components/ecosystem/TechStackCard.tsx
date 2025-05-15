@@ -25,12 +25,12 @@ const TechStackCard: React.FC<TechStackCardProps> = ({ technology }) => {
   };
 
   return (
-    <Card className="bg-muted/70 backdrop-blur-sm border-gray-800 hover:border-primary transition-all">
+    <Card className="bg-muted/70 backdrop-blur-sm border-gray-800 hover:border-primary transition-all duration-300 card-hover">
       <CardContent className="pt-6">
-        <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+        <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center mb-4 transform transition-all duration-500 hover:rotate-12 hover:scale-110">
           {getIcon()}
         </div>
-        <h3 className="text-xl font-bold mb-3">{technology.name}</h3>
+        <h3 className="text-xl font-bold mb-3 text-3d">{technology.name}</h3>
         <p className="text-gray-300 text-sm mb-4">
           {language === 'ko'
             ? technology.description
@@ -39,18 +39,22 @@ const TechStackCard: React.FC<TechStackCardProps> = ({ technology }) => {
         <div className="flex flex-wrap gap-2 mb-4">
           {language === 'ko'
             ? (technology.benefits && technology.benefits.map((benefit, index) => (
-                <span key={index} className="bg-background px-3 py-1 rounded-full text-xs text-gray-300">
+                <span key={index} className="bg-background px-3 py-1 rounded-full text-xs text-gray-300 transform transition-all hover:scale-105 hover:bg-primary/20">
                   {benefit}
                 </span>
               )))
             : ((technology as any).benefitsEn || technology.benefits)?.map((benefit: string, index: number) => (
-                <span key={index} className="bg-background px-3 py-1 rounded-full text-xs text-gray-300">
+                <span key={index} className="bg-background px-3 py-1 rounded-full text-xs text-gray-300 transform transition-all hover:scale-105 hover:bg-primary/20">
                   {benefit}
                 </span>
               ))
           }
         </div>
-        <Button variant="ghost" className="text-primary hover:underline text-sm group flex items-center">
+        <Button 
+          variant="ghost" 
+          className="text-primary text-sm group flex items-center button-glow"
+          onClick={() => window.open(technology.documentationLink, '_blank')}
+        >
           {language === 'ko' ? '기술 문서 보기' : 'View Technical Documentation'}
           <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14"></path>

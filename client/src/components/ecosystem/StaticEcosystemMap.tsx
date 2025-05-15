@@ -82,6 +82,9 @@ const StaticEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
   useEffect(() => {
     if (!mapRef.current || !filteredProjects.length) return;
     
+    // 이미 계산되었으면 다시 계산하지 않음
+    if (positions.center.x > 0) return;
+    
     const { clientWidth, clientHeight } = mapRef.current;
     const centerX = clientWidth / 2;
     const centerY = clientHeight / 2;
@@ -107,7 +110,7 @@ const StaticEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
       center: centerNode,
       projects: projectNodes
     });
-  }, [filteredProjects, isMobile, centerRadius, projectRadius]);
+  }, [filteredProjects, isMobile, centerRadius, projectRadius, positions.center.x]);
   
   return (
     <div 
