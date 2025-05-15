@@ -5,6 +5,7 @@ import { getColorClass } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTheme } from "@/components/layout/Header";
 import { ArrowRight } from "lucide-react";
+import Draggable from "react-draggable";
 
 // 로고 가져오기
 import succinctLogo from "../../assets/logos/official/zk-prover-logo.png";

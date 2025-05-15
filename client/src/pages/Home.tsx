@@ -1,8 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Project } from "@shared/schema";
-import EcosystemMap from "@/components/ecosystem/EcosystemMap";
-import DraggableEcosystemMap from "@/components/ecosystem/DraggableEcosystemMap";
+import SimpleEcosystemMap from "@/components/ecosystem/SimpleEcosystemMap";
 import ProjectCard from "@/components/ecosystem/ProjectCard";
 import TechStackCard from "@/components/ecosystem/TechStackCard";
 import { Button } from "@/components/ui/button";
@@ -90,7 +89,7 @@ const Home: React.FC = () => {
               </div>
             </div>
           ) : (
-            <DraggableEcosystemMap projects={projects || []} />
+            <SimpleEcosystemMap projects={projects || []} />
           )}
           
           <div className="text-center mb-10">
