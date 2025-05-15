@@ -5,6 +5,7 @@ import { getColorClass } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
 import Draggable from "react-draggable";
 import { useTheme } from "@/components/layout/Header";
+import { ArrowRight } from "lucide-react";
 
 // 로고 가져오기
 import succinctLogo from "../../assets/logos/official/zk-prover-logo.png";
@@ -71,9 +72,13 @@ const getProjectLogo = (slug: string): string => {
 }
 
 const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
+  // 기본 상태 관리
   const [positions, setPositions] = useState<NodePosition[]>([]);
-  const [nodePositions, setNodePositions] = useState<{[key: number]: {x: number, y: number}}>({});
-  const [activeTooltip, setActiveTooltip] = useState<number | null>(null);
+  const [centerPosition, setCenterPosition] = useState<{x: number, y: number} | null>(null);
+  const [projectPositions, setProjectPositions] = useState<{[key: string]: {x: number, y: number}}>({});
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  
+  // 참조 및 유틸리티
   const svgRef = useRef<SVGSVGElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
