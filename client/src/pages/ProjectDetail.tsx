@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Project } from "@shared/schema";
 import { Button } from "@/components/ui/button";
 import { getColorClass } from "@/lib/utils";
+import { useTheme } from "@/components/layout/Header";
 import { 
   Card, 
   CardContent 
@@ -15,6 +16,7 @@ import {
 
 const ProjectDetail: React.FC = () => {
   const { slug } = useParams();
+  const { language } = useTheme();
   
   const { data: project, isLoading, error } = useQuery<Project>({
     queryKey: [`/api/projects/${slug}`],
@@ -36,10 +38,18 @@ const ProjectDetail: React.FC = () => {
   if (error || !project) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
-        <h2 className="text-2xl font-bold mb-4">프로젝트를 찾을 수 없습니다</h2>
-        <p className="text-gray-300 mb-8">요청하신 프로젝트를 찾을 수 없거나 오류가 발생했습니다.</p>
+        <h2 className="text-2xl font-bold mb-4">
+          {language === 'ko' ? '프로젝트를 찾을 수 없습니다' : 'Project Not Found'}
+        </h2>
+        <p className="text-gray-300 mb-8">
+          {language === 'ko' 
+            ? '요청하신 프로젝트를 찾을 수 없거나 오류가 발생했습니다.' 
+            : 'The requested project could not be found or an error occurred.'}
+        </p>
         <Button variant="neon" asChild>
-          <Link href="/">홈으로 돌아가기</Link>
+          <Link href="/">
+            {language === 'ko' ? '홈으로 돌아가기' : 'Return to Home'}
+          </Link>
         </Button>
       </div>
     );

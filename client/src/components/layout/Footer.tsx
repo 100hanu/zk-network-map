@@ -22,9 +22,6 @@ const Footer: React.FC = () => {
             <a href="https://twitter.com/succinctlabs" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors">
               <FaTwitter className="h-6 w-6" />
             </a>
-            <a href="https://t.me/succinctlabs" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors">
-              <SiTelegram className="h-6 w-6" />
-            </a>
             <a href="https://discord.gg/succinctlabs" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors">
               <FaDiscord className="h-6 w-6" />
             </a>

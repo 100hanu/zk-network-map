@@ -3,6 +3,48 @@
 @tailwind utilities;
 
 :root {
+  /* 라이트 모드 */
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --muted: 240 5% 96%;
+  --muted-foreground: 240 3.7% 33%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --primary: 328 100% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 5% 64.9%;
+  --radius: 0.5rem;
+  
+  /* Chart colors */
+  --chart-1: 328 100% 54%;
+  --chart-2: 217 91% 60%;
+  --chart-3: 262 83% 58%;
+  --chart-4: 1 83% 63%;
+  --chart-5: 142 71% 45%;
+  
+  /* Sidebar colors */
+  --sidebar-background: 0 0% 100%;
+  --sidebar-foreground: 240 10% 3.9%;
+  --sidebar-primary: 328 100% 54%;
+  --sidebar-primary-foreground: 211 100% 99%;
+  --sidebar-accent: 240 4.8% 95.9%;
+  --sidebar-accent-foreground: 240 5.9% 10%;
+  --sidebar-border: 240 5.9% 90%;
+  --sidebar-ring: 240 5% 64.9%;
+}
+
+.dark {
+  /* 다크 모드 */
   --background: 240 10% 3.9%;
   --foreground: 0 0% 98%;
   --muted: 240 3.7% 15.9%;
@@ -23,13 +65,6 @@
   --destructive-foreground: 0 0% 98%;
   --ring: 240 4.9% 83.9%;
   --radius: 0.5rem;
-  
-  /* Chart colors */
-  --chart-1: 328 100% 54%;
-  --chart-2: 217 91% 60%;
-  --chart-3: 262 83% 58%;
-  --chart-4: 1 83% 63%;
-  --chart-5: 142 71% 45%;
   
   /* Sidebar colors */
   --sidebar-background: 240 10% 3.9%;
@@ -42,38 +77,24 @@
   --sidebar-ring: 240 4.9% 83.9%;
 }
 
-.dark {
-  --background: 240 10% 3.9%;
-  --foreground: 0 0% 98%;
-  --muted: 240 3.7% 15.9%;
-  --muted-foreground: 240 5% 64.9%;
-  --popover: 240 10% 3.9%;
-  --popover-foreground: 0 0% 98%;
-  --card: 240 10% 3.9%;
-  --card-foreground: 0 0% 98%;
-  --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
-  --primary: 328 100% 54%;
-  --primary-foreground: 211 100% 99%;
-  --secondary: 240 3.7% 15.9%;
-  --secondary-foreground: 0 0% 98%;
-  --accent: 240 3.7% 15.9%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --ring: 240 4.9% 83.9%;
-  --radius: 0.5rem;
-}
-
 @layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply font-sans antialiased text-foreground;
-    background: linear-gradient(135deg, hsl(240 10% 3.9%) 0%, hsl(240 20% 10%) 100%);
+    @apply font-sans antialiased text-foreground bg-background;
     min-height: 100vh;
+  }
+  
+  /* 다크 모드일 때 그라데이션 배경 */
+  .dark body {
+    background: linear-gradient(135deg, hsl(240 10% 3.9%) 0%, hsl(240 20% 10%) 100%);
+  }
+  
+  /* 라이트 모드일 때 그라데이션 배경 */
+  :root:not(.dark) body {
+    background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(240 5% 96%) 100%);
   }
 }
 
