@@ -27,7 +27,9 @@ export const technologies = pgTable("technologies", {
   name: text("name").notNull(),
   icon: text("icon").notNull(),
   description: text("description").notNull(),
+  descriptionEn: text("description_en"),
   benefits: text("benefits").array(),
+  benefitsEn: text("benefits_en").array(),
   documentationLink: text("documentation_link").notNull(),
 });
 
@@ -49,32 +51,41 @@ export const contacts = pgTable("contacts", {
   message: text("message").notNull(),
 });
 
-// Schema for inserting a project
-export const insertProjectSchema = createInsertSchema(projects).omit({
-  id: true,
+// Create insert schemas
+const projectInsertBase = createInsertSchema(projects).omit({ id: true });
+export const insertProjectSchema = projectInsertBase.extend({
+  introductionEn: z.string().nullable().optional(),
+  integrationDetailsEn: z.array(z.string()).nullable().optional(),
+  partnershipHighlightsEn: z.array(z.string()).nullable().optional(),
 });
 
-// Schema for inserting a technology
-export const insertTechnologySchema = createInsertSchema(technologies).omit({
-  id: true,
+const techInsertBase = createInsertSchema(technologies).omit({ id: true });
+export const insertTechnologySchema = techInsertBase.extend({
+  descriptionEn: z.string().nullable().optional(),
+  benefitsEn: z.array(z.string()).nullable().optional(),
 });
 
-// Schema for inserting a project-technology relationship
 export const insertProjectTechnologySchema = createInsertSchema(projectTechnologies).omit({
   id: true,
 });
 
-// Schema for inserting a contact
 export const insertContactSchema = createInsertSchema(contacts).omit({
   id: true,
 });
 
-// Types
+// Define types
 export type InsertProject = z.infer<typeof insertProjectSchema>;
-export type Project = typeof projects.$inferSelect;
+export type Project = typeof projects.$inferSelect & {
+  introductionEn?: string | null;
+  integrationDetailsEn?: string[] | null;
+  partnershipHighlightsEn?: string[] | null;
+};
 
 export type InsertTechnology = z.infer<typeof insertTechnologySchema>;
-export type Technology = typeof technologies.$inferSelect;
+export type Technology = typeof technologies.$inferSelect & {
+  descriptionEn?: string | null;
+  benefitsEn?: string[] | null;
+};
 
 export type InsertProjectTechnology = z.infer<typeof insertProjectTechnologySchema>;
 export type ProjectTechnology = typeof projectTechnologies.$inferSelect;
