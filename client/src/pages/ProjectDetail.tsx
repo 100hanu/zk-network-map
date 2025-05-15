@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Project } from "@shared/schema";
 import { Button } from "@/components/ui/button";
 import { getColorClass } from "@/lib/utils";
-import { useTheme } from "@/components/layout/Header";
+import { useLanguage } from "@/components/layout/Header";
 import { 
   Card, 
   CardContent 
@@ -16,7 +16,7 @@ import {
 
 const ProjectDetail: React.FC = () => {
   const { slug } = useParams();
-  const { language } = useTheme();
+  const { language } = useLanguage();
   
   const { data: project, isLoading, error } = useQuery<Project>({
     queryKey: [`/api/projects/${slug}`],
