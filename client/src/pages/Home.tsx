@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Project } from "@shared/schema";
-import SimpleEcosystemMap from "@/components/ecosystem/SimpleEcosystemMap";
+import StaticEcosystemMap from "@/components/ecosystem/StaticEcosystemMap";
 import ProjectCard from "@/components/ecosystem/ProjectCard";
 import TechStackCard from "@/components/ecosystem/TechStackCard";
 import { Button } from "@/components/ui/button";
@@ -89,7 +89,7 @@ const Home: React.FC = () => {
               </div>
             </div>
           ) : (
-            <SimpleEcosystemMap projects={projects || []} />
+            <StaticEcosystemMap projects={projects || []} />
           )}
           
           <div className="text-center mb-10">
