@@ -226,9 +226,14 @@ export class MemStorage implements IStorage {
         logoColor: "#D1FF52",
         mainTechnologies: ["TEE", "ZK 롤업", "AI 에이전트"],
         introduction: "팔라 네트워크는 기밀 컴퓨팅을 위한 블록체인 플랫폼으로, 신뢰할 수 있는 실행 환경(TEE)을 활용하여 프라이버시를 보호하면서도 컴퓨팅 작업을 수행할 수 있게 해줍니다. 이를 통해 민감한 데이터를 보호하면서도 스마트 컨트랙트를 실행할 수 있어, 의료 데이터 분석, 개인정보 보호 금융 서비스 등 다양한 응용 분야에 활용됩니다. Succinct와의 파트너십을 통해 팔라는 TEE 환경에서 실행되는 AI 에이전트의 행동에 대한 검증 가능성을 높이는 데 중점을 두고 있습니다.",
+        introductionEn: "Phala Network is a blockchain platform for confidential computing that utilizes Trusted Execution Environment (TEE) to perform computing tasks while protecting privacy. This allows for the execution of smart contracts while safeguarding sensitive data, applicable in various fields such as medical data analysis and privacy-preserving financial services. Through its partnership with Succinct, Phala focuses on enhancing the verifiability of AI agent behaviors executed in TEE environments.",
         integrationDetails: [
           "SP1 기반 OP Succinct 롤업 통합: 팔라 네트워크는 Succinct의 SP1 기술을 기반으로 한 OP Succinct 롤업을 메인넷에 도입하여, TEE 환경에서 실행되는 AI 에이전트의 행동을 ZK 증명을 통해 검증 가능하게 했습니다.",
           "ZK 증명을 통한 AI 행동 검증: 팔라의 TEE 환경 내에서 실행되는 AI 에이전트의 행동과 결정에 대한 증명을 생성하여, 에이전트가 정해진 규칙과 제약 조건 내에서 작동했음을 증명할 수 있게 되었습니다."
+        ],
+        integrationDetailsEn: [
+          "SP1-based OP Succinct Rollup Integration: Phala Network has implemented OP Succinct rollup based on Succinct's SP1 technology on its mainnet, making the actions of AI agents executed in TEE environments verifiable through ZK proofs.",
+          "AI Behavior Verification via ZK Proofs: Generated proofs for the actions and decisions of AI agents running within Phala's TEE environment, enabling verification that agents operated within established rules and constraints."
         ],
         partnershipHighlights: [
           "AI 에이전트의 행동에 대한 온체인 검증 가능성 확보",
@@ -236,6 +241,13 @@ export class MemStorage implements IStorage {
           "AI 에이전트의 신뢰도 70% 향상",
           "온체인 AI 서비스에 대한 가스 비용 60% 절감",
           "프라이버시 보호형 AI 애플리케이션 개발 환경 구축"
+        ],
+        partnershipHighlightsEn: [
+          "Secured on-chain verifiability for AI agent actions",
+          "Enhanced security and privacy through the combination of TEE environments and ZK proofs",
+          "70% improvement in AI agent trustworthiness",
+          "60% reduction in gas costs for on-chain AI services",
+          "Established a development environment for privacy-preserving AI applications"
         ]
       },
       {
@@ -248,9 +260,14 @@ export class MemStorage implements IStorage {
         logoColor: "#0078D4",
         mainTechnologies: ["ZK 롤업", "zkEVM", "SP1"],
         introduction: "Mantle은 이더리움 확장성 솔루션으로 개발된 모듈형 레이어2 네트워크로, 낮은 수수료와 빠른 거래 처리 속도를 제공합니다. 기존에는 옵티미스틱 롤업 기술을 사용했지만, 네트워크의 성능과 보안을 더욱 강화하기 위해 ZK 롤업으로의 전환을 진행 중입니다. Succinct와의 파트너십은 이러한 전환 과정에서 zkEVM 프레임워크와 SP1 기술을 활용하여 Mantle의 확장성과 보안을 강화하는 데 중점을 두고 있습니다.",
+        introductionEn: "Mantle is a modular Layer 2 network developed as an Ethereum scaling solution, providing low fees and fast transaction processing. While it previously used optimistic rollup technology, it is in the process of transitioning to ZK rollups to further enhance network performance and security. The partnership with Succinct focuses on utilizing zkEVM framework and SP1 technology during this transition to strengthen Mantle's scalability and security.",
         integrationDetails: [
           "ZK 롤업으로의 전환: Succinct의 zkEVM 프레임워크와 SP1 기술을 활용하여, Mantle이 옵티미스틱 롤업에서 ZK 롤업으로 원활하게 전환할 수 있도록 지원했습니다.",
           "통합 ZK 프루빙 시스템: Mantle의 레이어2 솔루션에 Succinct의 ZK 프루빙 시스템을 통합하여, 보다 빠르고 안전한 상태 전이 증명을 가능하게 했습니다."
+        ],
+        integrationDetailsEn: [
+          "Transition to ZK Rollups: Supported Mantle's smooth transition from optimistic rollups to ZK rollups by leveraging Succinct's zkEVM framework and SP1 technology.",
+          "Integrated ZK Proving System: Incorporated Succinct's ZK proving system into Mantle's Layer 2 solution, enabling faster and more secure state transition proofs."
         ],
         partnershipHighlights: [
           "ZK 롤업 전환을 통한 출금 시간 대폭 단축",
@@ -258,6 +275,13 @@ export class MemStorage implements IStorage {
           "상태 증명의 효율성 및 압축률 90% 향상",
           "이더리움 메인넷과의 상호 운용성 강화",
           "개발자 친화적인 ZK 롤업 환경 구축"
+        ],
+        partnershipHighlightsEn: [
+          "Significantly reduced withdrawal time through ZK rollup transition",
+          "6x increase in transaction processing capacity",
+          "90% improvement in state proof efficiency and compression rate",
+          "Enhanced interoperability with Ethereum mainnet",
+          "Built a developer-friendly ZK rollup environment"
         ]
       },
       {
@@ -270,9 +294,14 @@ export class MemStorage implements IStorage {
         logoColor: "#2E3148",
         mainTechnologies: ["IBC", "브리지", "SP1"],
         introduction: "Cosmos는 독립적인 블록체인 네트워크들이 서로 통신할 수 있게 해주는 인터블록체인 통신(IBC) 프로토콜을 개발한 블록체인 생태계입니다. IBC는 서로 다른 블록체인 간의 자산 및 데이터 전송을 가능하게 하여, 블록체인 간 상호 운용성 문제를 해결합니다. Succinct와의 파트너십은 IBC v2의 공식 배포와 함께, Cosmos와 Ethereum 간의 브리지를 Succinct의 Prover Network와 SP1을 통해 구현하여, 더 안전하고 효율적인 크로스체인 통신을 가능하게 하는 데 중점을 두고 있습니다.",
+        introductionEn: "Cosmos is a blockchain ecosystem that developed the Inter-Blockchain Communication (IBC) protocol, allowing independent blockchain networks to communicate with each other. IBC enables the transfer of assets and data between different blockchains, addressing blockchain interoperability issues. The partnership with Succinct, alongside the official deployment of IBC v2, focuses on implementing a bridge between Cosmos and Ethereum through Succinct's Prover Network and SP1, enabling more secure and efficient cross-chain communication.",
         integrationDetails: [
           "Cosmos-Ethereum 브리지: Succinct의 Prover Network와 SP1 기술을 활용하여, Cosmos와 Ethereum 간의 안전하고 효율적인 브리지를 구현했습니다. 이를 통해 두 생태계 간의 자산 및 데이터 이동이 가능해졌습니다.",
           "IBC 트랜잭션의 ZK 증명: IBC 트랜잭션에 ZK 증명을 적용하여, 크로스체인 통신의 보안성과 검증 가능성을 크게 향상시켰습니다. 이는 저렴한 비용으로 안전한 IBC 트랜잭션을 가능하게 했습니다."
+        ],
+        integrationDetailsEn: [
+          "Cosmos-Ethereum Bridge: Implemented a secure and efficient bridge between Cosmos and Ethereum using Succinct's Prover Network and SP1 technology. This enabled the movement of assets and data between these two ecosystems.",
+          "ZK Proofs for IBC Transactions: Applied ZK proofs to IBC transactions, greatly enhancing the security and verifiability of cross-chain communications. This allowed for secure IBC transactions at a lower cost."
         ],
         partnershipHighlights: [
           "Cosmos와 Ethereum 간 브리지 구축을 통한 생태계 확장",
@@ -280,6 +309,13 @@ export class MemStorage implements IStorage {
           "크로스체인 통신의 보안성 및 신뢰도 향상",
           "IBC v2와 ZK 증명의 통합을 통한 상호 운용성 강화",
           "다중 체인 환경에서의 개발자 경험 개선"
+        ],
+        partnershipHighlightsEn: [
+          "Ecosystem expansion through bridge building between Cosmos and Ethereum",
+          "75% reduction in verification costs for IBC transactions",
+          "Enhanced security and reliability of cross-chain communication",
+          "Strengthened interoperability through integration of IBC v2 and ZK proofs",
+          "Improved developer experience in multi-chain environments"
         ]
       },
       {
@@ -292,9 +328,14 @@ export class MemStorage implements IStorage {
         logoColor: "#E6007A",
         mainTechnologies: ["데이터 가용성", "ZK 프로버", "SP1"],
         introduction: "Avail은 다양한 롤업 및 모듈형 블록체인을 위한 데이터 가용성(DA) 계층을 제공하는 프로젝트입니다. 안정적이고 확장 가능한 데이터 가용성 솔루션을 통해, 롤업과 같은 레이어2 솔루션이 보다 효율적으로 운영될 수 있도록 지원합니다. Succinct와의 파트너십은 SP1 기반의 ZK 프로버를 통합하여, 모듈형 ZK 데이터 가용성 솔루션을 개발하는 데 중점을 두고 있습니다.",
+        introductionEn: "Avail is a project that provides a data availability (DA) layer for various rollups and modular blockchains. Through a reliable and scalable data availability solution, it supports more efficient operation of layer 2 solutions such as rollups. The partnership with Succinct focuses on developing a modular ZK data availability solution by integrating SP1-based ZK provers.",
         integrationDetails: [
           "SP1 기반 ZK 프로버 통합: Avail의 데이터 가용성 계층에 Succinct의 SP1 기반 ZK 프로버를 통합하여, 데이터 가용성 증명의 효율성과 신뢰성을 향상시켰습니다.",
           "모듈형 ZK 데이터 가용성: Succinct의 ZK 기술을 활용하여, Avail이 제공하는 데이터 가용성 솔루션의 모듈화와 확장성을 강화했습니다. 이를 통해 다양한 롤업과 블록체인이 필요에 맞게 데이터 가용성 서비스를 활용할 수 있게 되었습니다."
+        ],
+        integrationDetailsEn: [
+          "SP1-based ZK Prover Integration: Integrated Succinct's SP1-based ZK prover into Avail's data availability layer, enhancing the efficiency and reliability of data availability proofs.",
+          "Modular ZK Data Availability: Strengthened the modularity and scalability of Avail's data availability solution by utilizing Succinct's ZK technology. This allowed various rollups and blockchains to utilize data availability services according to their needs."
         ],
         partnershipHighlights: [
           "ZK 증명을 통한 데이터 가용성 검증의 효율성 향상",
@@ -302,6 +343,13 @@ export class MemStorage implements IStorage {
           "롤업 및 모듈형 블록체인을 위한 확장 가능한 DA 솔루션 제공",
           "다양한 블록체인 환경에서의 상호 운용성 강화",
           "ZK 기술 기반의 새로운 데이터 가용성 표준 확립"
+        ],
+        partnershipHighlightsEn: [
+          "Improved efficiency of data availability verification through ZK proofs",
+          "80% reduction in data verification costs",
+          "Providing scalable DA solutions for rollups and modular blockchains",
+          "Enhanced interoperability across various blockchain environments",
+          "Establishing new data availability standards based on ZK technology"
         ]
       },
       {
