@@ -58,9 +58,14 @@ export class MemStorage implements IStorage {
         logoColor: "#3498db",
         mainTechnologies: ["ZK-SNARK", "Recursive Proofs"],
         introduction: "이더리움은 스마트 컨트랙트 기능을 가진 블록체인 플랫폼으로, 다양한 분산 애플리케이션(DApp)을 구축할 수 있는 기반을 제공합니다. 2015년 출시된 이후 블록체인 업계에서 가장 활발한 개발자 생태계를 보유하고 있으며, 이더(ETH)는 시가총액 기준 두 번째로 큰 암호화폐입니다. 이더리움은 최근 지속적인 확장성 향상을 위해 다양한 레이어2 솔루션과 ZK 증명 기술을 도입하고 있으며, 특히 Succinct의 기술을 활용한 트랜잭션 처리 속도 개선에 주력하고 있습니다.",
+        introductionEn: "Ethereum is a blockchain platform with smart contract functionality, providing the foundation for building various decentralized applications (DApps). Since its launch in 2015, it has developed the most active developer ecosystem in the blockchain industry, with Ether (ETH) being the second-largest cryptocurrency by market capitalization. Ethereum has recently been introducing various Layer 2 solutions and ZK proof technology for continuous scalability improvements, focusing particularly on enhancing transaction processing speed using Succinct's technology.",
         integrationDetails: [
           "ZK-SNARK 증명 통합: 이더리움은 Succinct의 ZK-SNARK 증명 기술을 활용하여 트랜잭션 검증 과정을 최적화하고, 처리 속도를 향상시켰습니다. 특히 복잡한 스마트 컨트랙트 실행에 대한 증명을 효율적으로 생성하고 검증함으로써 네트워크의 확장성 문제를 완화했습니다.",
           "재귀적 증명(Recursive Proofs) 적용: Succinct의 재귀적 증명 기술을 도입하여 다수의 트랜잭션을 하나의 증명으로 압축하고, 이를 통해 검증 시간을 크게 단축했습니다. 이는 이더리움 메인넷의 확장성을 획기적으로 향상시키는 핵심 요소로 작용하고 있습니다."
+        ],
+        integrationDetailsEn: [
+          "ZK-SNARK Proof Integration: Ethereum has utilized Succinct's ZK-SNARK proof technology to optimize transaction verification processes and improve processing speed. By efficiently generating and verifying proofs for complex smart contract executions, it has alleviated network scalability issues.",
+          "Application of Recursive Proofs: Introducing Succinct's recursive proof technology compresses multiple transactions into a single proof, significantly reducing verification time. This acts as a key factor in dramatically improving the scalability of the Ethereum mainnet."
         ],
         partnershipHighlights: [
           "이더리움 메인넷의 트랜잭션 처리 용량 3배 증가",
@@ -68,6 +73,13 @@ export class MemStorage implements IStorage {
           "복잡한 DeFi 트랜잭션의 검증 시간 85% 단축",
           "ZK 롤업 솔루션과의 호환성 향상으로 L2 생태계 확장 지원",
           "개발자 도구 및 SDK 공동 개발을 통한 ZK 애플리케이션 개발 촉진"
+        ],
+        partnershipHighlightsEn: [
+          "Tripled transaction processing capacity of Ethereum mainnet",
+          "Average 45% reduction in smart contract execution costs (gas)",
+          "85% reduction in verification time for complex DeFi transactions",
+          "Support for L2 ecosystem expansion through improved compatibility with ZK rollup solutions",
+          "Promotion of ZK application development through joint development of developer tools and SDKs"
         ]
       },
       {
@@ -368,9 +380,14 @@ export class MemStorage implements IStorage {
         logoColor: "#FF0066",
         mainTechnologies: ["ZK 롤업", "SP1", "이더리움 등가"],
         introduction: "Taiko는 이더리움과 완벽하게 호환되는 ZK 롤업 솔루션으로, 이더리움의 모든 기능과 도구를 그대로 사용하면서도 더 낮은 비용과 높은 처리량을 제공합니다. 이더리움 등가(Ethereum-equivalence)라는 개념을 도입하여, 개발자들이 별도의 수정 없이 기존 이더리움 애플리케이션을 Taiko에 배포할 수 있도록 합니다. Succinct와의 파트너십은 SP1을 도입하여 Taiko의 ZK 롤업 성능과 보안을 강화하는 데 중점을 두고 있습니다.",
+        introductionEn: "Taiko is a ZK rollup solution fully compatible with Ethereum, offering lower costs and higher throughput while utilizing all of Ethereum's features and tools. By introducing the concept of Ethereum-equivalence, developers can deploy existing Ethereum applications to Taiko without modifications. The partnership with Succinct focuses on enhancing Taiko's ZK rollup performance and security by implementing SP1.",
         integrationDetails: [
           "SP1 기반 ZK 롤업 최적화: Succinct의 SP1 기술을 Taiko의 ZK 롤업 프로토콜에 통합하여, 증명 생성 속도와 효율성을 크게 향상시켰습니다.",
           "이더리움 등가 검증: SP1을 활용하여 Taiko의 이더리움 등가 속성을 효율적으로 검증하는 메커니즘을 개발했습니다. 이를 통해 이더리움과의 완벽한 호환성을 유지하면서도 뛰어난 성능을 제공할 수 있게 되었습니다."
+        ],
+        integrationDetailsEn: [
+          "SP1-Based ZK Rollup Optimization: Succinct's SP1 technology has been integrated into Taiko's ZK rollup protocol, greatly improving proof generation speed and efficiency.",
+          "Ethereum-Equivalence Verification: Developed a mechanism using SP1 to efficiently verify Taiko's Ethereum-equivalence properties. This allows for perfect compatibility with Ethereum while delivering superior performance."
         ],
         partnershipHighlights: [
           "ZK 롤업의 증명 생성 시간 대폭 단축",
@@ -378,6 +395,13 @@ export class MemStorage implements IStorage {
           "트랜잭션 처리 비용 85% 절감",
           "개발자 친화적인 이더리움 등가 ZK 롤업 환경 구축",
           "SP1 기술을 활용한 새로운 ZK 롤업 표준 확립"
+        ],
+        partnershipHighlightsEn: [
+          "Significantly reduced proof generation time for ZK rollups",
+          "Maintained perfect compatibility with Ethereum mainnet",
+          "85% reduction in transaction processing costs",
+          "Built a developer-friendly Ethereum-equivalent ZK rollup environment",
+          "Established a new ZK rollup standard utilizing SP1 technology"
         ]
       },
       {
@@ -410,21 +434,27 @@ export class MemStorage implements IStorage {
         name: "ZK-SNARK",
         icon: "lock",
         description: "영지식 증명 기술의 대표적인 방식으로, 정보를 노출하지 않고 증명을 검증합니다.",
+        descriptionEn: "A prominent method of zero-knowledge proof technology that verifies proofs without exposing information.",
         benefits: ["낮은 검증 비용", "높은 증명 효율성"],
+        benefitsEn: ["Low verification cost", "High proof efficiency"],
         documentationLink: "/tech/zk-snark"
       },
       {
         name: "Plonky2",
         icon: "bolt",
         description: "Succinct의 핵심 증명 시스템으로, 재귀적 증명을 가능하게 하는 혁신적인 ZK 기술입니다.",
+        descriptionEn: "Succinct's core proof system, an innovative ZK technology that enables recursive proofs.",
         benefits: ["초고속 증명 생성", "재귀적 증명 지원"],
+        benefitsEn: ["Ultra-fast proof generation", "Recursive proof support"],
         documentationLink: "/tech/plonky2"
       },
       {
         name: "ZK Coprocessor",
         icon: "microchip",
         description: "복잡한 계산을 오프체인에서 처리하고 결과만 온체인에 검증하는 혁신적인 아키텍처입니다.",
+        descriptionEn: "An innovative architecture that processes complex calculations off-chain and verifies only the results on-chain.",
         benefits: ["오프체인 계산", "온체인 검증"],
+        benefitsEn: ["Off-chain computation", "On-chain verification"],
         documentationLink: "/tech/zk-coprocessor"
       }
     ];
