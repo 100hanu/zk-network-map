@@ -43,9 +43,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             ? (project.introduction.length > 120 
                 ? `${project.introduction.substring(0, 120)}...` 
                 : project.introduction)
-            : ((project as any).introductionEn && (project as any).introductionEn.length > 120
-                ? `${(project as any).introductionEn.substring(0, 120)}...`
-                : (project as any).introductionEn || project.introduction)}
+            : (project.introductionEn && project.introductionEn.length > 120
+                ? `${project.introductionEn.substring(0, 120)}...`
+                : project.introductionEn || project.introduction)}
         </p>
         <div className="flex justify-between items-center">
           <Link href={`/projects/${project.slug}`}>

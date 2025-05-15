@@ -124,7 +124,7 @@ const ProjectDetail: React.FC = () => {
           <p className="text-gray-300 whitespace-pre-line">
             {language === 'ko' 
               ? project.introduction
-              : ((project as any).introductionEn || project.introduction)}
+              : (project.introductionEn || project.introduction)}
           </p>
         </div>
 
@@ -146,7 +146,7 @@ const ProjectDetail: React.FC = () => {
                   </Card>
                 );
               })
-            : ((project as any).integrationDetailsEn || project.integrationDetails)?.map((detail: string, index: number) => {
+            : (project.integrationDetailsEn || project.integrationDetails)?.map((detail: string, index: number) => {
                 const [title, description] = detail.split(': ');
                 return (
                   <Card key={index} className="bg-background/60 mb-4">
@@ -171,7 +171,7 @@ const ProjectDetail: React.FC = () => {
               ? project.partnershipHighlights?.map((highlight: string, index: number) => (
                   <li key={index}>{highlight}</li>
                 ))
-              : ((project as any).partnershipHighlightsEn || project.partnershipHighlights)?.map((highlight: string, index: number) => (
+              : (project.partnershipHighlightsEn || project.partnershipHighlights)?.map((highlight: string, index: number) => (
                   <li key={index}>{highlight}</li>
                 ))
             }
