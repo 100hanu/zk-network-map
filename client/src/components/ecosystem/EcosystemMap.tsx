@@ -160,12 +160,12 @@ const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
               height: positions[0].radius * 2
             }}
           >
-            <div className="bg-background rounded-full w-full h-full flex items-center justify-center border-4 border-primary neon-border">
-              <div className="w-full h-full flex flex-col items-center justify-center">
+            <div className="bg-background rounded-lg w-full h-full flex items-center justify-center border-4 border-primary neon-border">
+              <div className="w-full h-full flex flex-col items-center justify-center p-2">
                 <img 
                   src={succinctLogo} 
                   alt="ZK Prover Network" 
-                  className="w-3/4 h-3/4 object-contain"
+                  className="w-4/5 h-4/5 object-contain"
                 />
               </div>
             </div>
@@ -195,7 +195,12 @@ const EcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
                       alt={project.name} 
                       className="w-3/4 h-3/4 object-contain"
                     />
-                    <div className="tooltip absolute -top-24 left-1/2 transform -translate-x-1/2 bg-muted p-3 rounded-lg shadow-lg w-48 text-sm opacity-0 transition-opacity group-hover:opacity-100 z-50">
+                    <div className="tooltip fixed bg-muted p-3 rounded-lg shadow-lg w-48 text-sm opacity-0 transition-opacity group-hover:opacity-100 z-[9999]" 
+                      style={{
+                        top: `${position.y - 100}px`,
+                        left: `${position.x}px`,
+                        transform: 'translateX(-50%)'
+                      }}>
                       <div className={`font-bold ${getColorClass(project.logoColor, 'text')}`}>{project.name}</div>
                       <div className="text-xs text-gray-300">{project.description}</div>
                       <div className="text-xs text-gray-300 mt-1">
