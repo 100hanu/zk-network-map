@@ -8,7 +8,7 @@ import Home from "@/pages/Home";
 import ProjectDetail from "@/pages/ProjectDetail";
 import TechStack from "@/pages/TechStack";
 import Contact from "@/pages/Contact";
-import Header from "@/components/layout/Header";
+import Header, { ThemeProvider } from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 function Router() {
@@ -26,16 +26,18 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          <main className="flex-grow">
-            <Router />
-          </main>
-          <Footer />
-        </div>
-        <Toaster />
-      </TooltipProvider>
+      <ThemeProvider>
+        <TooltipProvider>
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <main className="flex-grow">
+              <Router />
+            </main>
+            <Footer />
+          </div>
+          <Toaster />
+        </TooltipProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

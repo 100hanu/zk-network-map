@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import { FaTwitter, FaDiscord, FaGithub } from "react-icons/fa";
+import { SiTelegram } from "react-icons/si";
+import { ExternalLink } from "lucide-react";
+import { useTheme } from "./Header";
 
 const Footer: React.FC = () => {
   return (
