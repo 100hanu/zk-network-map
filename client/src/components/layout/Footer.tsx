@@ -55,11 +55,9 @@ const Footer: React.FC = () => {
             <div>
               <h4 className="text-lg font-bold mb-4">{language === 'ko' ? '기술' : 'Technology'}</h4>
               <ul className="space-y-2">
-                <li><Link href="/tech-stack"><span className="text-gray-400 hover:text-primary cursor-pointer">ZK-SNARK</span></Link></li>
-                <li><Link href="/tech-stack"><span className="text-gray-400 hover:text-primary cursor-pointer">Plonky2</span></Link></li>
-                <li><Link href="/tech-stack"><span className="text-gray-400 hover:text-primary cursor-pointer">ZK Coprocessor</span></Link></li>
-                <li><Link href="/tech-stack"><span className="text-gray-400 hover:text-primary cursor-pointer">Recursive Proofs</span></Link></li>
-                <li><Link href="/tech-stack"><span className="text-gray-400 hover:text-primary cursor-pointer">ZK Bridge</span></Link></li>
+                <li><Link href="/tech-stack"><span className="text-gray-400 hover:text-primary cursor-pointer">SP1 – Modular zkVM</span></Link></li>
+                <li><Link href="/tech-stack"><span className="text-gray-400 hover:text-primary cursor-pointer">Real-Time Proving Layer</span></Link></li>
+                <li><Link href="/tech-stack"><span className="text-gray-400 hover:text-primary cursor-pointer">vApps (Verifiable Applications)</span></Link></li>
               </ul>
             </div>
             <div>
@@ -79,7 +77,7 @@ const Footer: React.FC = () => {
                 <li><a href="https://succinct.xyz/team" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary">{language === 'ko' ? '팀' : 'Team'}</a></li>
                 <li><a href="https://succinct.xyz/roadmap" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary">{language === 'ko' ? '로드맵' : 'Roadmap'}</a></li>
                 <li><a href="https://succinct.xyz/careers" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary">{language === 'ko' ? '채용' : 'Careers'}</a></li>
-                <li><Link href="/contact"><span className="text-gray-400 hover:text-primary cursor-pointer">{language === 'ko' ? '연락처' : 'Contact'}</span></Link></li>
+                <li><a href="https://linktr.ee/KSW_CRYPTO" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary">{language === 'ko' ? '만든이' : 'Creator'}</a></li>
               </ul>
             </div>
           </div>
