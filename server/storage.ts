@@ -160,9 +160,14 @@ export class MemStorage implements IStorage {
         logoColor: "#2980b9",
         mainTechnologies: ["Arbitrum Rollup", "Succinct Proofs"],
         introduction: "아비트럼은 이더리움의 확장성을 개선하기 위한 레이어2 롤업 솔루션으로, 옵티미스틱 롤업 기술을 기반으로 하지만 독자적인 Arbitrum Rollup 기술을 개발했습니다. 메인넷과 동일한 보안성을 유지하면서도 더 낮은 수수료와 빠른 트랜잭션 처리를 제공합니다. Succinct와의 파트너십을 통해 롤업 증명 검증 과정을 개선하고 있습니다.",
+        introductionEn: "Arbitrum is a Layer 2 rollup solution for improving Ethereum's scalability, based on optimistic rollup technology but with its own developed Arbitrum Rollup technology. It provides lower fees and faster transaction processing while maintaining the same security as the mainnet. Through its partnership with Succinct, Arbitrum is improving the rollup proof verification process.",
         integrationDetails: [
           "Succinct Proofs 통합: Arbitrum의 롤업 프로토콜에 Succinct의 효율적인 증명 시스템을 통합하여 검증 과정의 계산 복잡성을 크게 줄였습니다. 이를 통해 메인넷에 제출되는 증명의 크기가 작아지고 검증 비용이 절감되었습니다.",
           "Zero-Knowledge 기반 검증 레이어: Arbitrum의 옵티미스틱 롤업 위에 ZK 기반 검증 레이어를 추가하는 하이브리드 접근법을 채택하여, 기존 시스템의 보안을 유지하면서도 성능을 향상시켰습니다."
+        ],
+        integrationDetailsEn: [
+          "Succinct Proofs Integration: Integrated Succinct's efficient proof system into Arbitrum's rollup protocol, significantly reducing the computational complexity of the verification process. This resulted in smaller proof sizes submitted to the mainnet and reduced verification costs.",
+          "Zero-Knowledge-based Verification Layer: Adopted a hybrid approach by adding a ZK-based verification layer on top of Arbitrum's optimistic rollup, enhancing performance while maintaining the security of the existing system."
         ],
         partnershipHighlights: [
           "Arbitrum One 메인넷의 검증 비용 65% 절감",
@@ -170,6 +175,13 @@ export class MemStorage implements IStorage {
           "롤업 검증 프로세스의 가스 소비량 70% 절감",
           "사기 증명(fraud proof) 제출 시간 12시간에서 30분으로 단축",
           "Arbitrum Nova 체인에 Succinct ZK 기술 시범 적용 및 테스트"
+        ],
+        partnershipHighlightsEn: [
+          "65% reduction in verification costs for Arbitrum One mainnet",
+          "80% reduction in state transition proof size",
+          "70% reduction in gas consumption for rollup verification process",
+          "Shortened fraud proof submission time from 12 hours to 30 minutes",
+          "Pilot application and testing of Succinct ZK technology on Arbitrum Nova chain"
         ]
       },
       {
@@ -182,9 +194,14 @@ export class MemStorage implements IStorage {
         logoColor: "#00FFA3",
         mainTechnologies: ["ZK 증명", "SP1"],
         introduction: "솔라나는 높은 처리량과 낮은 트랜잭션 비용을 제공하는 고성능 레이어1 블록체인입니다. 독특한 지분 증명 및 역사 증명(Proof of History) 합의 메커니즘을 사용하여 초당 수천 개의 트랜잭션을 처리할 수 있습니다. Succinct와의 파트너십을 통해 솔라나 생태계에 ZK 증명 기술을 도입하고, 프라이버시와 스케일링 관련 사용 사례를 확장하고 있습니다.",
+        introductionEn: "Solana is a high-performance Layer 1 blockchain that offers high throughput and low transaction costs. Using a unique proof of stake and proof of history consensus mechanism, it can process thousands of transactions per second. Through its partnership with Succinct, Solana is introducing ZK proof technology to its ecosystem and expanding use cases related to privacy and scaling.",
         integrationDetails: [
           "SP1 ZK 프루버 통합: Succinct의 SP1 ZK 프루버를 솔라나 생태계에 통합하여, 온체인 데이터의 검증 가능성을 높이고 프라이버시 보호 기능을 강화했습니다.",
           "ZK 증명 기반 스케일링 솔루션: Succinct의 ZK 기술을 활용하여 솔라나 체인 간 또는 솔라나와 다른 블록체인 간의 상호 운용성을 개선하고, 다양한 크로스체인 애플리케이션을 가능하게 했습니다."
+        ],
+        integrationDetailsEn: [
+          "SP1 ZK Prover Integration: Integrated Succinct's SP1 ZK prover into the Solana ecosystem, enhancing the verifiability of on-chain data and strengthening privacy protection features.",
+          "ZK Proof-Based Scaling Solutions: Utilized Succinct's ZK technology to improve interoperability between Solana chains or between Solana and other blockchains, enabling various cross-chain applications."
         ],
         partnershipHighlights: [
           "솔라나 생태계에 ZK 프라이버시 솔루션 도입",
@@ -192,6 +209,13 @@ export class MemStorage implements IStorage {
           "솔라나 프로그램의 실행 증명 검증을 통한 투명성 향상",
           "온체인 검증 가능한 컴퓨팅 기반 개발자 도구 제공",
           "ZK 기술을 통한 솔라나 스마트 컨트랙트 확장성 향상"
+        ],
+        partnershipHighlightsEn: [
+          "Introduction of ZK privacy solutions to the Solana ecosystem",
+          "Enhanced cross-chain bridge security using SP1-based ZK proofs",
+          "Improved transparency through execution proof verification of Solana programs",
+          "Developer tools based on on-chain verifiable computing",
+          "Enhanced Solana smart contract scalability through ZK technology"
         ]
       },
       {
@@ -204,9 +228,14 @@ export class MemStorage implements IStorage {
         logoColor: "#6966FF",
         mainTechnologies: ["ZK 추첨", "SP1", "드랜드 오라클"],
         introduction: "Galxe(갤럭시)는 웹3 환경에서 디지털 자격 증명을 위한 대표적인 네트워크로, 다양한 블록체인과 프로젝트에 걸쳐 사용자 참여와 온보딩을 촉진합니다. 사용자들은 특정 활동을 완료하고 배지나 NFT 형태의 자격 증명을 획득할 수 있으며, 이를 통해 다양한 커뮤니티와 프로젝트에 참여할 수 있습니다. Succinct와의 파트너십은 Galxe 플랫폼에 ZK 기술을 도입하여 투명하고 검증 가능한 추첨 시스템을 구현하는 데 중점을 두고 있습니다.",
+        introductionEn: "Galxe is a leading network for digital credentials in the Web3 environment, facilitating user participation and onboarding across various blockchains and projects. Users can complete specific activities and earn credentials in the form of badges or NFTs, allowing them to participate in various communities and projects. The partnership with Succinct focuses on implementing transparent and verifiable raffle systems by introducing ZK technology to the Galxe platform.",
         integrationDetails: [
           "zkRaffle 구현: Succinct의 SP1 zkVM을 활용하여 드랜드 오라클과 함께 ZK 증명 기반의 공정한 추첨 시스템(zkRaffle)을 구현했습니다. 이 시스템은 완전히 투명하고 검증 가능한 무작위 추첨을 보장합니다.",
           "온체인 검증 가능성 강화: ZK 증명을 통해 추첨 과정의 모든 단계가 온체인에서 검증 가능하도록 하여, 사용자들이 추첨 결과의 공정성을 직접 확인할 수 있게 했습니다."
+        ],
+        integrationDetailsEn: [
+          "zkRaffle Implementation: Implemented a ZK proof-based fair raffle system (zkRaffle) using Succinct's SP1 zkVM together with the drand oracle. This system ensures completely transparent and verifiable random drawings.",
+          "Enhanced On-chain Verifiability: Made all stages of the raffle process verifiable on-chain through ZK proofs, allowing users to directly verify the fairness of raffle results."
         ],
         partnershipHighlights: [
           "ZK 증명 기반 추첨 시스템으로 완전한 온체인 투명성 확보",
@@ -214,6 +243,13 @@ export class MemStorage implements IStorage {
           "추첨 프로세스의 가스 비용 85% 절감",
           "zkRaffle을 통한 사용자 참여 및 커뮤니티 활동 50% 증가",
           "ZK 기술을 활용한 다양한 온체인 게임 및 이벤트 개발 가능성 확장"
+        ],
+        partnershipHighlightsEn: [
+          "Achieved complete on-chain transparency with ZK proof-based raffle system",
+          "Guaranteed verifiable randomness using drand oracle",
+          "85% reduction in gas costs for raffle processes",
+          "50% increase in user participation and community activities through zkRaffle",
+          "Expanded possibilities for developing various on-chain games and events using ZK technology"
         ]
       },
       {
