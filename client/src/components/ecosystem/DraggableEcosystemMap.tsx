@@ -3,7 +3,6 @@ import { Link } from "wouter";
 import { Project } from "@shared/schema";
 import { getColorClass } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
-import Draggable from "react-draggable";
 import { useTheme } from "@/components/layout/Header";
 import { ArrowRight } from "lucide-react";
 
@@ -61,18 +60,23 @@ const DraggableEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   
+  // 노드 크기 설정
+  const centerRadius = isMobile ? 40 : 64;
+  const projectRadius = isMobile ? 30 : 40;
+  
   // 상태 관리
   const [centerPos, setCenterPos] = useState({ x: 0, y: 0 });
   const [projectPositions, setProjectPositions] = useState<{[slug: string]: {x: number, y: number}}>({});
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
+  const [clickedNode, setClickedNode] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
   
-  // 노드 크기 설정
-  const centerRadius = isMobile ? 40 : 64;
-  const projectRadius = isMobile ? 30 : 40;
+  // Scroll 프로젝트 필터링
+  const filteredProjects = projects.filter(project => project.slug !== 'scroll');
 
   // 초기 위치 설정
   useEffect(() => {
-    if (!mapRef.current || !projects.length) return;
+    if (!mapRef.current || !filteredProjects.length) return;
     
     const mapWidth = mapRef.current.clientWidth;
     const mapHeight = mapRef.current.clientHeight;
@@ -84,11 +88,11 @@ const DraggableEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
     
     // 프로젝트 노드 위치 계산
     const radius = Math.min(mapWidth, mapHeight) * 0.38;
-    const angleStep = (2 * Math.PI) / projects.length;
+    const angleStep = (2 * Math.PI) / filteredProjects.length;
     
     const newPositions: {[slug: string]: {x: number, y: number}} = {};
     
-    projects.forEach((project, index) => {
+    filteredProjects.forEach((project, index) => {
       const angle = index * angleStep;
       // 다양한 반지름으로 위치 다양화
       const radiusVariation = 0.9 + (index % 3) * 0.1;
@@ -100,28 +104,53 @@ const DraggableEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
     });
     
     setProjectPositions(newPositions);
-  }, [projects, isMobile]);
-
-  // 중앙 노드를 드래그할 때 실행되는 핸들러
-  const handleCenterDrag = (e: any, data: any) => {
-    setCenterPos({ x: data.x, y: data.y });
+  }, [filteredProjects, isMobile]);
+  
+  // 마우스 이벤트 핸들러
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    
+    const rect = mapRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    
+    // 마우스 위치 계산
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // 드래그 중인 노드가 중앙 노드인 경우
+    if (hoveredNode === 'center') {
+      setCenterPos({ x, y });
+    } 
+    // 드래그 중인 노드가 프로젝트 노드인 경우
+    else if (hoveredNode) {
+      const newPositions = { ...projectPositions };
+      newPositions[hoveredNode] = { x, y };
+      setProjectPositions(newPositions);
+    }
   };
   
-  // 프로젝트 노드를 드래그할 때 실행되는 핸들러
-  const handleProjectDrag = (slug: string, e: any, data: any) => {
-    const newPositions = { ...projectPositions };
-    newPositions[slug] = { x: data.x, y: data.y };
-    setProjectPositions(newPositions);
+  // 마우스 드래그 종료
+  const handleMouseUp = () => {
+    setIsDragging(false);
   };
+  
+  // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+  useEffect(() => {
+    document.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, []);
 
   return (
     <div 
       ref={mapRef}
       className="ecosystem-map bg-muted/50 rounded-2xl p-4 mb-12 border border-gray-800 relative h-[70vh] overflow-hidden"
+      onMouseMove={handleMouseMove}
     >
       {/* SVG 연결선 */}
       <svg className="absolute inset-0 w-full h-full" ref={svgRef}>
-        {projects.map((project) => {
+        {filteredProjects.map((project) => {
           if (!projectPositions[project.slug]) return null;
           
           return (
@@ -140,64 +169,77 @@ const DraggableEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
       </svg>
       
       {/* 중앙 노드 */}
-      <Draggable 
-        position={centerPos} 
-        onDrag={handleCenterDrag}
-        onStop={() => {}}
-        positionOffset={{x: -centerRadius, y: -centerRadius}}
+      <div 
+        className="absolute z-30 cursor-move"
+        style={{
+          left: centerPos.x - centerRadius,
+          top: centerPos.y - centerRadius,
+          width: centerRadius * 2,
+          height: centerRadius * 2,
+        }}
+        onMouseDown={(e) => {
+          e.preventDefault();
+          setHoveredNode('center');
+          setIsDragging(true);
+        }}
+        onMouseEnter={() => !isDragging && setHoveredNode('center')}
+        onMouseLeave={() => !isDragging && setHoveredNode(null)}
       >
-        <div 
-          className="absolute z-30 cursor-move"
-          style={{
-            width: centerRadius * 2,
-            height: centerRadius * 2,
-          }}
-        >
-          <div className="bg-background rounded-lg w-full h-full flex items-center justify-center border-4 border-primary neon-border">
-            <div className="w-full h-full flex items-center justify-center p-2">
-              <img 
-                src={succinctLogo} 
-                alt="ZK Prover Network" 
-                className="w-4/5 h-4/5 object-contain"
-              />
-            </div>
+        <div className="bg-background rounded-lg w-full h-full flex items-center justify-center border-4 border-primary neon-border">
+          <div className="w-full h-full flex items-center justify-center p-2">
+            <img 
+              src={succinctLogo} 
+              alt="ZK Prover Network" 
+              className="w-4/5 h-4/5 object-contain"
+            />
           </div>
         </div>
-      </Draggable>
+      </div>
       
       {/* 프로젝트 노드들 */}
-      {projects.map((project) => {
+      {filteredProjects.map((project) => {
         if (!projectPositions[project.slug]) return null;
+        
+        const isActive = hoveredNode === project.slug || clickedNode === project.slug;
         
         return (
           <div key={project.slug}>
-            <Draggable
-              position={projectPositions[project.slug]}
-              onDrag={(e, data) => handleProjectDrag(project.slug, e, data)}
-              onStop={() => {}}
-              positionOffset={{x: -projectRadius, y: -projectRadius}}
+            <div 
+              className="absolute z-20 cursor-move transition-transform duration-150"
+              style={{
+                left: projectPositions[project.slug].x - projectRadius,
+                top: projectPositions[project.slug].y - projectRadius,
+                width: projectRadius * 2,
+                height: projectRadius * 2,
+                transform: isActive ? 'scale(1.1)' : 'scale(1)'
+              }}
+              onMouseDown={(e) => {
+                e.preventDefault();
+                setHoveredNode(project.slug);
+                setIsDragging(true);
+              }}
+              onClick={() => {
+                // 클릭했을 때 해당 노드 고정 또는 고정 해제
+                if (clickedNode === project.slug) {
+                  setClickedNode(null);
+                } else {
+                  setClickedNode(project.slug);
+                }
+              }}
+              onMouseEnter={() => !isDragging && setHoveredNode(project.slug)}
+              onMouseLeave={() => !isDragging && !clickedNode && setHoveredNode(null)}
             >
-              <div 
-                className="absolute z-20 cursor-move"
-                style={{
-                  width: projectRadius * 2,
-                  height: projectRadius * 2,
-                }}
-                onMouseEnter={() => setHoveredNode(project.slug)}
-                onMouseLeave={() => setHoveredNode(null)}
-              >
-                <div className={`bg-background rounded-full w-full h-full flex items-center justify-center border-2 ${getColorClass(project.logoColor, 'border')}`}>
-                  <img 
-                    src={getProjectLogo(project.slug)} 
-                    alt={project.name} 
-                    className="w-3/4 h-3/4 object-contain"
-                  />
-                </div>
+              <div className={`bg-background rounded-full w-full h-full flex items-center justify-center border-2 ${getColorClass(project.logoColor, 'border')}`}>
+                <img 
+                  src={getProjectLogo(project.slug)} 
+                  alt={project.name} 
+                  className="w-3/4 h-3/4 object-contain"
+                />
               </div>
-            </Draggable>
+            </div>
             
-            {/* 툴팁 */}
-            {hoveredNode === project.slug && (
+            {/* 툴팁 - 마우스 오버 또는 클릭 시 표시 */}
+            {isActive && (
               <div
                 className="fixed z-50 bg-muted p-3 rounded-lg shadow-lg"
                 style={{
@@ -224,6 +266,11 @@ const DraggableEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
                     </a>
                   </Link>
                 </div>
+                {clickedNode === project.slug && (
+                  <div className="absolute top-1 right-1 text-xs text-gray-400">
+                    ● 고정됨
+                  </div>
+                )}
               </div>
             )}
           </div>
