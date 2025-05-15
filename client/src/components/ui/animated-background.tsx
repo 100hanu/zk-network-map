@@ -53,14 +53,14 @@ const AnimatedBackground: React.FC = () => {
       
       constructor() {
         this.z = Math.random() * 1000; // Z축 추가 (깊이감)
-        this.maxSpeed = 0.8;
+        this.maxSpeed = 0.4; // 속도 절반으로 감소
         this.x = Math.random() * (canvas?.width || window.innerWidth);
         this.y = Math.random() * (canvas?.height || window.innerHeight);
-        this.baseSize = Math.random() * 4 + 1;
+        this.baseSize = Math.random() * 3 + 1; // 입자 크기 약간 감소
         this.size = this.calculateSize();
         this.speedX = (Math.random() - 0.5) * this.maxSpeed;
         this.speedY = (Math.random() - 0.5) * this.maxSpeed;
-        this.speedZ = (Math.random() - 0.5) * 0.5; // Z축 속도
+        this.speedZ = (Math.random() - 0.5) * 0.25; // Z축 속도 절반으로 감소
         
         // 테마에 따라 색상 변경
         if (isDarkTheme) {
@@ -145,39 +145,46 @@ const AnimatedBackground: React.FC = () => {
       }
     }
     
-    // 파티클 배열 생성
-    const particleCount = Math.floor(window.innerWidth * window.innerHeight / 12000);
+    // 파티클 배열 생성 - 개수 감소로 성능 개선
+    const particleCount = Math.floor(window.innerWidth * window.innerHeight / 20000); // 더 적은 파티클
     const particles: Particle[] = [];
     
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
     
-    // 파티클 간 연결선 그리기 (가까운 파티클끼리 연결)
+    // 최적화된 파티클 간 연결선 그리기 (성능 개선)
     const drawConnections = () => {
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i; j < particles.length; j++) {
+      // 최대 연결선 수 제한
+      const maxConnections = 300; // 최대 연결선 수 제한으로 성능 향상
+      let connectionCount = 0;
+      
+      // 간격을 두고 파티클 순회 (모든 파티클을 확인하지 않음)
+      for (let i = 0; i < particles.length; i += 2) { // 2칸씩 건너뛰기
+        for (let j = i + 2; j < particles.length; j += 2) { // 2칸씩 건너뛰기
+          if (connectionCount >= maxConnections) return; // 최대 연결선 수에 도달하면 중단
+          
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+          const distSquared = dx * dx + dy * dy; // 제곱근 계산 피하기
           
           // Z 축을 고려한 연결 (가까운 Z값을 가진 파티클끼리만 연결)
           const zDistance = Math.abs(particles[i].z - particles[j].z);
           
-          if (distance < 150 && zDistance < 200) {
+          if (distSquared < 22500 && zDistance < 200) { // 150^2 = 22500
             if (!ctx) return;
             
             // Z 깊이에 따른 선 투명도
             const alpha = 0.15 * (1 - Math.max(particles[i].z, particles[j].z) / 1000);
             
             ctx.beginPath();
-            ctx.strokeStyle = isDarkTheme 
-              ? `rgba(255, 50, 255, ${alpha * (1 - distance / 150)})` 
-              : `rgba(0, 150, 255, ${alpha * (1 - distance / 150)})`;
-            ctx.lineWidth = 0.7 * (1 - Math.max(particles[i].z, particles[j].z) / 1000);
+            ctx.strokeStyle = `rgba(255, 50, 255, ${alpha * (1 - Math.min(distSquared / 22500, 1))})`;
+            ctx.lineWidth = 0.5 * (1 - Math.max(particles[i].z, particles[j].z) / 1000); // 선 두께 감소
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.stroke();
+            
+            connectionCount++;
           }
         }
       }
@@ -211,16 +218,34 @@ const AnimatedBackground: React.FC = () => {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
     
-    // 애니메이션 루프
-    const animate = () => {
+    // 최적화된 애니메이션 루프
+    let lastFrameTime = 0;
+    const targetFps = 30; // 30fps로 제한하여 성능 개선
+    const frameInterval = 1000 / targetFps;
+    
+    const animate = (timestamp: number = 0) => {
       if (!ctx || !canvas) return;
+      
+      const deltaTime = timestamp - lastFrameTime;
+      
+      // 목표 FPS로 프레임 제한
+      if (deltaTime < frameInterval) {
+        requestAnimationFrame(animate);
+        return;
+      }
+      
+      lastFrameTime = timestamp - (deltaTime % frameInterval);
+      
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       // 그라데이션 배경 그리기
       drawGradientBackground();
       
       // 깊이 기준으로 정렬 (z가 작은 것(가까운 것)이 나중에 그려지도록)
-      particles.sort((a, b) => b.z - a.z);
+      // 정렬은 가끔만 수행 (매 프레임마다 하지 않음)
+      if (timestamp % (frameInterval * 5) < frameInterval) {
+        particles.sort((a, b) => b.z - a.z);
+      }
       
       for (let i = 0; i < particles.length; i++) {
         particles[i].update(mousePosition.x, mousePosition.y);

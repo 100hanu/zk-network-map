@@ -197,14 +197,15 @@ const StaticEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
               </div>
             </div>
             
-            {/* 툴팁 - 클릭 또는 호버 시 표시 */}
+            {/* 툴팁 - 클릭 또는 호버 시 표시, 깜빡임 방지 위해 pointer-events-none 추가 */}
             {(isSelected || hoveredNode === project.slug) && (
               <div
-                className="fixed z-50 bg-muted/95 p-4 rounded-lg shadow-lg"
+                className="fixed z-50 bg-muted/95 p-4 rounded-lg shadow-lg pointer-events-none"
                 style={{
                   left: `${position.x + position.radius + 15}px`,
                   top: `${position.y - 20}px`,
                   width: '240px',
+                  transform: 'translateZ(0)', // 깜빡임 방지 위한 하드웨어 가속
                 }}
               >
                 <div className={`font-bold text-lg mb-2 ${getColorClass(project.logoColor, 'text')}`}>
@@ -217,15 +218,17 @@ const StaticEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
                   {project.mainTechnologies && project.mainTechnologies[0]} 
                   {language === 'ko' ? ' 통합' : ' Integration'}
                 </div>
-                <div className="mt-3 text-center pt-2 border-t border-gray-700">
-                  <Link href={`/projects/${project.slug}`} className="inline-flex items-center text-primary text-sm font-medium hover:underline">
-                    {language === 'ko' ? '자세히 보기' : 'View Details'} 
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </div>
+                {isSelected && ( // 클릭한 경우에만 링크 표시 (포인터 이벤트 활성화)
+                  <div className="mt-3 text-center pt-2 border-t border-gray-700 pointer-events-auto">
+                    <Link href={`/projects/${project.slug}`} className="inline-flex items-center text-primary text-sm font-medium hover:underline">
+                      {language === 'ko' ? '자세히 보기' : 'View Details'} 
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </div>
+                )}
                 {isSelected && (
                   <button 
-                    className="absolute top-2 right-2 text-gray-500 hover:text-gray-300"
+                    className="absolute top-2 right-2 text-gray-500 hover:text-gray-300 pointer-events-auto"
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedNode(null);
