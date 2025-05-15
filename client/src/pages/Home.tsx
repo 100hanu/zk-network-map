@@ -17,7 +17,7 @@ const Home: React.FC = () => {
     queryKey: ['/api/projects'],
   });
   
-  const { data: technologies, isLoading: techLoading } = useQuery({
+  const { data: technologies, isLoading: techLoading } = useQuery<any[]>({
     queryKey: ['/api/technologies'],
   });
 
@@ -83,7 +83,9 @@ const Home: React.FC = () => {
             <div className="ecosystem-map bg-muted/50 rounded-2xl p-4 mb-12 border border-gray-800 flex items-center justify-center">
               <div className="text-center">
                 <div className="animate-spin h-8 w-8 border-2 border-primary rounded-full border-t-transparent mx-auto mb-4"></div>
-                <p className="text-gray-300">생태계 맵을 불러오는 중...</p>
+                <p className="text-gray-300">
+                  {language === 'ko' ? '생태계 맵을 불러오는 중...' : 'Loading ecosystem map...'}
+                </p>
               </div>
             </div>
           ) : (
@@ -91,16 +93,20 @@ const Home: React.FC = () => {
           )}
           
           <div className="text-center mb-10">
-            <p className="text-gray-300 mb-4">네트워크 노드를 클릭하여 각 프로젝트의 상세 정보를 확인해보세요</p>
+            <p className="text-gray-300 mb-4">
+              {language === 'ko' 
+                ? '네트워크 노드를 클릭하여 각 프로젝트의 상세 정보를 확인해보세요'
+                : 'Click on a network node to view details of each project'}
+            </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="outlineNeon">
-                모든 연결 보기
+                {language === 'ko' ? '모든 연결 보기' : 'View All Connections'}
               </Button>
               <Button variant="outlineNeon">
-                기술 스택별 필터링
+                {language === 'ko' ? '기술 스택별 필터링' : 'Filter by Tech Stack'}
               </Button>
               <Button variant="outlineNeon">
-                시간순 보기
+                {language === 'ko' ? '시간순 보기' : 'View Chronologically'}
               </Button>
             </div>
           </div>
@@ -112,10 +118,12 @@ const Home: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold mb-4">
-              <span className="text-primary neon-glow">주요</span> 프로젝트
+              <span className="text-primary neon-glow">{language === 'ko' ? '주요' : 'Key'}</span> {language === 'ko' ? '프로젝트' : 'Projects'}
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Succinct와 파트너십을 맺고 있는 주요 프로젝트들을 살펴보세요
+              {language === 'ko'
+                ? 'Succinct와 파트너십을 맺고 있는 주요 프로젝트들을 살펴보세요'
+                : 'Explore the key projects that have partnerships with Succinct'}
             </p>
           </div>
 
@@ -135,12 +143,16 @@ const Home: React.FC = () => {
                     <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mx-auto mb-4 border border-primary">
                       <svg xmlns="http://www.w3.org/2000/svg" className="text-primary text-xl" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
                     </div>
-                    <h3 className="text-xl font-bold mb-2">더 많은 프로젝트</h3>
+                    <h3 className="text-xl font-bold mb-2">
+                      {language === 'ko' ? '더 많은 프로젝트' : 'More Projects'}
+                    </h3>
                     <p className="text-gray-400 text-sm mb-4">
-                      Succinct 생태계에 참여하는 다른 프로젝트들도 살펴보세요
+                      {language === 'ko'
+                        ? 'Succinct 생태계에 참여하는 다른 프로젝트들도 살펴보세요'
+                        : 'Explore other projects participating in the Succinct ecosystem'}
                     </p>
                     <Button variant="outlineNeon">
-                      전체 프로젝트 보기
+                      {language === 'ko' ? '전체 프로젝트 보기' : 'View All Projects'}
                     </Button>
                   </div>
                 </div>
@@ -162,10 +174,12 @@ const Home: React.FC = () => {
             <div className="max-w-3xl mx-auto text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">
                 <span className="text-white">Succinct</span>{" "}
-                <span className="text-primary neon-glow">ZK 기술 스택</span>
+                <span className="text-primary neon-glow">{language === 'ko' ? 'ZK 기술 스택' : 'ZK Tech Stack'}</span>
               </h2>
               <p className="text-gray-300">
-                Succinct의 혁신적인 ZK 프루프 기술과 네트워크 구성 요소를 살펴보세요
+                {language === 'ko'
+                  ? 'Succinct의 혁신적인 ZK 프루프 기술과 네트워크 구성 요소를 살펴보세요'
+                  : 'Explore Succinct\'s innovative ZK proof technology and network components'}
               </p>
             </div>
 
@@ -184,7 +198,7 @@ const Home: React.FC = () => {
             <div className="mt-12 text-center">
               <Button variant="neon" size="pillLg" asChild>
                 <Link href="/tech-stack">
-                  기술 스택 자세히 보기
+                  {language === 'ko' ? '기술 스택 자세히 보기' : 'View Tech Stack Details'}
                 </Link>
               </Button>
             </div>
