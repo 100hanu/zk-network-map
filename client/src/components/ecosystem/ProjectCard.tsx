@@ -4,12 +4,14 @@ import { Link } from "wouter";
 import { getColorClass } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
+import { useTheme } from "@/components/layout/Header";
 
 interface ProjectCardProps {
   project: Project;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const { language } = useTheme();
   return (
     <Card className="bg-muted/50 border-gray-800 overflow-hidden hover:border-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/20">
       <CardContent className="p-6">
@@ -22,7 +24,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <h3 className="text-xl font-bold">{project.name}</h3>
         </div>
         <div className="mb-4">
-          <div className="text-sm text-gray-400 mb-1">사용 기술:</div>
+          <div className="text-sm text-gray-400 mb-1">
+            {language === 'ko' ? '사용 기술:' : 'Technologies:'}
+          </div>
           <div className="flex flex-wrap gap-2">
             {project.mainTechnologies && project.mainTechnologies.map((tech, index) => (
               <span 
@@ -35,18 +39,26 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </div>
         </div>
         <p className="text-gray-300 text-sm mb-4">
-          {project.introduction.length > 120 
-            ? `${project.introduction.substring(0, 120)}...` 
-            : project.introduction}
+          {language === 'ko'
+            ? (project.introduction.length > 120 
+                ? `${project.introduction.substring(0, 120)}...` 
+                : project.introduction)
+            : (project.introductionEn && project.introductionEn.length > 120
+                ? `${project.introductionEn.substring(0, 120)}...`
+                : project.introductionEn || project.introduction)}
         </p>
         <div className="flex justify-between items-center">
           <Link href={`/projects/${project.slug}`}>
             <a className="text-primary hover:underline text-sm flex items-center group">
-              자세히 보기 
+              {language === 'ko' ? '자세히 보기' : 'View Details'}
               <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </Link>
-          <span className="text-xs text-gray-400">{project.year}년 파트너십 체결</span>
+          <span className="text-xs text-gray-400">
+            {language === 'ko' 
+              ? `${project.year}년 파트너십 체결` 
+              : `Partnership established in ${project.year}`}
+          </span>
         </div>
       </CardContent>
     </Card>
