@@ -10,6 +10,7 @@ import TechStack from "@/pages/TechStack";
 import Contact from "@/pages/Contact";
 import Header, { ThemeProvider } from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import AnimatedBackground from "@/components/ui/animated-background";
 
 function Router() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <ThemeProvider>
         <TooltipProvider>
           <div className="min-h-screen flex flex-col">
+            <AnimatedBackground />
             <Header />
             <main className="flex-grow">
               <Router />
