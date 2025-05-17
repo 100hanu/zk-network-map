@@ -9,6 +9,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Link } from "wouter";
 import { useLanguage } from "@/components/layout/Header";
 import AnimatedBackground from "@/components/ui/animated-background";
+// 정적 데이터 가져오기 (API 연결 문제 해결을 위함)
+import { projects as staticProjects, technologies as staticTechnologies } from "@/data/staticData";
 
 const Home: React.FC = () => {
   const { toast } = useToast();

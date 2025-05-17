@@ -1,6 +1,12 @@
 // netlify/functions/api.js
-import { pool, db } from '../../server/db.js';
-import { storage } from '../../server/storage.js';
+// ESM 모듈 대신 CommonJS 형식으로 변경 (서버리스 호환성 향상)
+const serverDb = require('../../server/db.js');
+const serverStorage = require('../../server/storage.js');
+
+// 데이터베이스 연결 테스트
+const pool = serverDb.pool;
+const db = serverDb.db;
+const storage = serverStorage.storage;
 
 export async function handler(event, context) {
   // CORS 헤더 설정
