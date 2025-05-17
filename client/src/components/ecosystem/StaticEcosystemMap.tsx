@@ -215,10 +215,12 @@ const StaticEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
                   {project.name}
                 </div>
                 <div className="text-sm text-gray-300 mb-2">
-                  {project.description}
+                  {project.mainTechnologies && project.mainTechnologies.join(', ')}
                 </div>
                 <div className="text-xs text-gray-400 mt-2">
-                  {language === 'ko' ? 'ZK Prover 통합' : 'ZK Prover Integration'}
+                  {language === 'ko' 
+                    ? project.description + " / ZK 기술 통합" 
+                    : project.description + " / ZK Technology Integration"}
                 </div>
                 {isSelected && ( // 클릭한 경우에만 링크 표시 (포인터 이벤트 활성화)
                   <div className="mt-3 text-center pt-2 border-t border-gray-700 pointer-events-auto">
