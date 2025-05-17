@@ -2,6 +2,8 @@ import React from "react";
 import { useParams, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Project } from "@shared/schema";
+// 정적 데이터 가져오기 (API 연결 문제 해결을 위함)
+import { projects as staticProjects, technologies as staticTechnologies, projectTechnologies as staticProjectTechnologies } from "@/data/staticData";
 import { Button } from "@/components/ui/button";
 import { getColorClass } from "@/lib/utils";
 import { useLanguage } from "@/components/layout/Header";
@@ -18,14 +20,37 @@ const ProjectDetail: React.FC = () => {
   const { slug } = useParams();
   const { language } = useLanguage();
   
-  const { data: project, isLoading, error } = useQuery<Project>({
+  // API에서 데이터 가져오기 시도 + 정적 데이터 백업 사용
+  const { data: apiProject, isLoading: apiLoading, error: apiError } = useQuery<Project>({
     queryKey: [`/api/projects/${slug}`],
+    retry: 1,
+    gcTime: 0
   });
   
-  const { data: technologies, isLoading: techLoading } = useQuery({
-    queryKey: [`/api/projects/${project?.id}/technologies`],
-    enabled: !!project?.id,
+  const { data: apiTechnologies, isLoading: apiTechLoading } = useQuery({
+    queryKey: [`/api/projects/${apiProject?.id}/technologies`],
+    enabled: !!apiProject?.id,
+    retry: 1,
+    gcTime: 0
   });
+  
+  // 정적 데이터에서 현재 slug에 해당하는 프로젝트 찾기
+  const staticProject = React.useMemo(() => 
+    staticProjects.find(p => p.slug === slug), 
+    [slug]
+  );
+  
+  // 정적 데이터에서 관련 기술 찾기
+  const staticTechRelations = React.useMemo(() => 
+    staticProjectTechnologies.filter(pt => staticProject && pt.projectId === staticProject.id), 
+    [staticProject]
+  );
+  
+  // API 또는 정적 데이터 사용
+  const project = apiError || !apiProject ? staticProject : apiProject;
+  const technologies = !apiTechnologies ? staticTechRelations : apiTechnologies;
+  const isLoading = apiLoading && !staticProject;
+  const error = apiError && !staticProject;
 
   if (isLoading) {
     return (
