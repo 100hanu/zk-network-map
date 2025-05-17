@@ -34,11 +34,23 @@ const ProjectDetail: React.FC = () => {
     gcTime: 0
   });
   
-  // 정적 데이터에서 현재 slug에 해당하는 프로젝트 찾기
-  const staticProject = React.useMemo(() => 
-    staticProjects.find(p => p.slug === slug), 
-    [slug]
-  );
+  // 로컬스토리지에서 프로젝트 데이터 가져오기 또는 정적 데이터에서 찾기
+  const staticProject = React.useMemo(() => {
+    // 먼저 로컬 스토리지에서 찾기
+    const storedProject = localStorage.getItem('selectedProject');
+    if (storedProject) {
+      try {
+        const parsedProject = JSON.parse(storedProject);
+        if (parsedProject.slug === slug) {
+          return parsedProject;
+        }
+      } catch (e) {
+        console.error('로컬 스토리지 데이터 파싱 오류:', e);
+      }
+    }
+    // 정적 데이터에서 찾기
+    return staticProjects.find(p => p.slug === slug);
+  }, [slug]);
   
   // 정적 데이터에서 관련 기술 찾기
   const staticTechRelations = React.useMemo(() => 

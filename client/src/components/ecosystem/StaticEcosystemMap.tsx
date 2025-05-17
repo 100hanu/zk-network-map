@@ -224,10 +224,15 @@ const StaticEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
                 </div>
                 {isSelected && ( // 클릭한 경우에만 링크 표시 (포인터 이벤트 활성화)
                   <div className="mt-3 text-center pt-2 border-t border-gray-700 pointer-events-auto">
-                    <Link href={`/projects/${project.slug}`} className="inline-flex items-center text-primary text-sm font-medium hover:underline">
+                    <a href="#" onClick={(e) => {
+                      e.preventDefault();
+                      const projectData = JSON.stringify(project);
+                      localStorage.setItem('selectedProject', projectData);
+                      window.location.href = `/projects/${project.slug}`;
+                    }} className="inline-flex items-center text-primary text-sm font-medium hover:underline">
                       {language === 'ko' ? '자세히 보기' : 'View Details'} 
                       <ArrowRight className="ml-1 h-4 w-4" />
-                    </Link>
+                    </a>
                   </div>
                 )}
                 {isSelected && (
