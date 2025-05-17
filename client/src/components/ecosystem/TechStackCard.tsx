@@ -53,7 +53,7 @@ const TechStackCard: React.FC<TechStackCardProps> = ({ technology }) => {
         <Button 
           variant="ghost" 
           className="text-primary text-sm group flex items-center button-glow"
-          onClick={() => window.open(technology.documentationLink, '_blank')}
+          onClick={() => window.open('https://succinctlabs.notion.site/Succinct-Truth-Prover-Writing-Topics-1dde020fb42f8041b34ee1ab815efbf9', '_blank')}
         >
           {language === 'ko' ? '기술 문서 보기' : 'View Technical Documentation'}
           <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
