@@ -1,14 +1,24 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Technology } from "@shared/schema";
+// 정적 데이터 가져오기 (API 연결 문제 해결을 위함)
+import { technologies as staticTechnologies } from "@/data/staticData";
 import { Button } from "@/components/ui/button";
 import TechStackCard from "@/components/ecosystem/TechStackCard";
 import { Link } from "wouter";
 
 const TechStack: React.FC = () => {
-  const { data: technologies, isLoading, error } = useQuery<Technology[]>({
+  // API에서 데이터 가져오기 시도 + 정적 데이터 백업 사용
+  const { data: apiTechnologies, isLoading: apiLoading, error: apiError } = useQuery<Technology[]>({
     queryKey: ['/api/technologies'],
+    retry: 1,
+    gcTime: 0
   });
+  
+  // API 또는 정적 데이터 사용
+  const technologies = !apiTechnologies || apiTechnologies.length === 0 ? staticTechnologies : apiTechnologies;
+  const isLoading = apiLoading && technologies.length === 0;
+  const error = apiError && technologies.length === 0;
 
   return (
     <div className="flex flex-col min-h-screen">
