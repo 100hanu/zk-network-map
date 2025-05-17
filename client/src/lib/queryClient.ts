@@ -12,7 +12,12 @@ export async function apiRequest(
   url: string,
   data?: unknown | undefined,
 ): Promise<Response> {
-  const res = await fetch(url, {
+  // 배포 환경에서 Netlify 함수 경로로 변경
+  const apiUrl = url.startsWith('/api/') 
+    ? (import.meta.env.PROD ? '/.netlify/functions/api' + url : url)
+    : url;
+  
+  const res = await fetch(apiUrl, {
     method,
     headers: data ? { "Content-Type": "application/json" } : {},
     body: data ? JSON.stringify(data) : undefined,
@@ -29,7 +34,13 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
-    const res = await fetch(queryKey[0] as string, {
+    // 배포 환경에서 Netlify 함수 경로로 변경
+    const url = queryKey[0] as string;
+    const apiUrl = url.startsWith('/api/') 
+      ? (import.meta.env.PROD ? '/.netlify/functions/api' + url : url)
+      : url;
+    
+    const res = await fetch(apiUrl, {
       credentials: "include",
     });
 
