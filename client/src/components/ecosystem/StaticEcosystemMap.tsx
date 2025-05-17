@@ -190,9 +190,12 @@ const StaticEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
             >
               <div className={`bg-background rounded-full w-full h-full flex items-center justify-center border-2 ${getColorClass(project.logoColor, 'border')}`}>
                 <img 
-                  src={getProjectLogo(project.slug)} 
+                  src={project.logo || getProjectLogo(project.slug)} 
                   alt={project.name} 
                   className="w-3/4 h-3/4 object-contain"
+                  onError={(e) => {
+                    e.currentTarget.src = succinctLogo; // 이미지 로드 실패 시 대체 이미지
+                  }}
                 />
               </div>
             </div>
@@ -215,8 +218,7 @@ const StaticEcosystemMap: React.FC<EcosystemMapProps> = ({ projects }) => {
                   {project.description}
                 </div>
                 <div className="text-xs text-gray-400 mt-2">
-                  {project.mainTechnologies && project.mainTechnologies[0]} 
-                  {language === 'ko' ? ' 통합' : ' Integration'}
+                  {language === 'ko' ? 'ZK Prover 통합' : 'ZK Prover Integration'}
                 </div>
                 {isSelected && ( // 클릭한 경우에만 링크 표시 (포인터 이벤트 활성화)
                   <div className="mt-3 text-center pt-2 border-t border-gray-700 pointer-events-auto">
