@@ -180,11 +180,12 @@ export const projects: any[] = [
 ];
 
 // 기술 스택 데이터
-export const technologies: Technology[] = [
+export const technologies: any[] = [
   {
     id: 1,
     name: "SP1 – Modular zkVM",
-    category: "zkVM",
+    category: "zkVM", // 정적 데이터 호환성 유지
+    icon: "https://i.imgur.com/JxZm1DY.png",
     description: "SP1은 Succinct의 자체 개발한 모듈식 zkVM으로, Rust 기반으로 작성되었으며 다양한 proving backend와 호환됩니다.",
     descriptionEn: "SP1 is Succinct's self-developed modular zkVM, written in Rust and compatible with various proving backends.",
     iconUrl: "https://i.imgur.com/JxZm1DY.png",

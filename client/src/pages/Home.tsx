@@ -16,13 +16,25 @@ const Home: React.FC = () => {
   const { toast } = useToast();
   const { language } = useLanguage();
   
-  const { data: projects, isLoading, error } = useQuery<Project[]>({
+  // API에서 데이터 가져오기 시도, 오류 발생 시 정적 데이터 사용
+  const { data: apiProjects, isLoading: apiLoading, error: apiError } = useQuery<Project[]>({
     queryKey: ['/api/projects'],
+    retry: 1, // 재시도 횟수 제한
+    gcTime: 0 // 캐시 시간 줄이기
   });
   
-  const { data: technologies, isLoading: techLoading } = useQuery<any[]>({
+  const { data: apiTechnologies, isLoading: apiTechLoading } = useQuery<any[]>({
     queryKey: ['/api/technologies'],
+    retry: 1,
+    gcTime: 0
   });
+  
+  // API 성공 여부에 따라 정적 데이터 또는 API 데이터 사용
+  const projects = apiError || !apiProjects || apiProjects.length === 0 ? staticProjects : apiProjects;
+  const technologies = !apiTechnologies || apiTechnologies.length === 0 ? staticTechnologies : apiTechnologies;
+  const isLoading = apiLoading && projects.length === 0;
+  const techLoading = apiTechLoading && technologies.length === 0;
+  const error = apiError && projects.length === 0;
 
   React.useEffect(() => {
     if (error) {
