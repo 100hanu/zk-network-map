@@ -713,4 +713,9 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+// 메모리 스토리지 사용
+// export const storage = new MemStorage();
+
+// 데이터베이스 스토리지 사용
+import { DatabaseStorage } from "./database-storage";
+export const storage = new DatabaseStorage();
